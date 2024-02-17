@@ -1,5 +1,6 @@
-# AngularOptimizationExamples
+# Angular Optimization with Pokemon
 
+A basic Angular app to showcase some performance optimisation techniques within Angular SPAs.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
 
 ## Development server
