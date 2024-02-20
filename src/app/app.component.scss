@@ -1,14 +1,10 @@
-header {
-  img {
-    max-width: 100%;
-  }
+main {
+  min-height: 73.5vh;
+  max-width: 1600px;
+  margin: auto;
 }
 
 footer {
-  padding: 2rem;
+  background: black;
   text-align: center;
-
-  img {
-    max-width: 200px;
-  }
 }

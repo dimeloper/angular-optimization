@@ -4,19 +4,16 @@ import { PokemonService } from '../../services/pokemon.service';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-pokedex',
+  selector: 'app-pokemon-list',
   standalone: true,
-  imports: [
-    NgForOf,
-    RouterLink
-  ],
-  templateUrl: './pokedex.component.html',
-  styleUrl: './pokedex.component.scss'
+  imports: [NgForOf, RouterLink],
+  templateUrl: './pokemon-list.component.html',
+  styleUrl: './pokemon-list.component.scss',
 })
-export class PokedexComponent implements OnInit {
+export class PokemonListComponent implements OnInit {
   pokemonList: any[] = [];
 
-  constructor(private pokemonService: PokemonService) { }
+  constructor(private pokemonService: PokemonService) {}
 
   ngOnInit() {
     this.getPokemon();
@@ -31,13 +28,15 @@ export class PokedexComponent implements OnInit {
 
   fetchPokemonDetails(pokemonUrls: string[]) {
     pokemonUrls.forEach(url => {
-      this.pokemonService.getPokemonDetailsByUrl(url).subscribe((details: any) => {
-        const pokemon = {
-          name: details.name,
-          image: details.sprites.front_default
-        };
-        this.pokemonList.push(pokemon);
-      });
+      this.pokemonService
+        .getPokemonDetailsByUrl(url)
+        .subscribe((details: any) => {
+          const pokemon = {
+            name: details.name,
+            image: details.sprites.front_default,
+          };
+          this.pokemonList.push(pokemon);
+        });
     });
   }
 }

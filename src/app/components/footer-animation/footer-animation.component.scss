@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
+
+$bg-color: #22292B;
+$line-color: linear-gradient(to right, #ff0066 0%, #ff00cc 100%);
+$line-height: 4px;
+$text-color: #FFF;
+$text-size: 4em;
+$sub-text-color: #FFF;
+
+@keyframes onLoad {
+  from {
+    background: #FFF;
+  }
+  to {
+    background: $bg-color;
+  }
+}
+
+:host {
+  animation: onLoad 0.5s ease 0s forwards;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+
+  .container {
+    height: 64px;
+    position: relative;
+
+    .name {
+      padding-top: 15px;
+      position: relative;
+      height: 44px;
+      overflow: hidden;
+
+      @keyframes loadName {
+        from {
+          transform: translateY(64px);
+        }
+        to {
+          transform: translateY(0px);
+        }
+      }
+
+      span {
+        display: inline-block;
+        font-size: $text-size;
+        color: $text-color;
+        transform: translateY(64px);
+
+        &:nth-child(1) {
+          animation: loadName 0.5s ease 1s forwards;
+        }
+
+        &:nth-child(2) {
+          animation: loadName 0.5s ease 1.2s forwards;
+        }
+
+        &:nth-child(3) {
+          animation: loadName 0.5s ease 1.4s forwards;
+        }
+
+        &:nth-child(4) {
+          animation: loadName 0.5s ease 1.6s forwards;
+        }
+
+        &:nth-child(5) {
+          animation: loadName 0.5s ease 1.8s forwards;
+        }
+
+        &:nth-child(6) {
+          animation: loadName 0.5s ease 2s forwards;
+        }
+
+        &:nth-child(7) {
+          animation: loadName 0.5s ease 2.2s forwards;
+        }
+      }
+    }
+
+    @keyframes loadLine {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    .line {
+      height: $line-height;
+      background: $line-color;
+      width: 0;
+      border-radius: 50px;
+      animation: loadLine 0.8s ease 2.2s forwards
+    }
+
+    @keyframes fadeSubIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .sub {
+      margin-top: 5px;
+
+      p {
+        opacity: 0;
+        color: $sub-text-color;
+        letter-spacing: 4px;
+        animation: fadeSubIn 1s ease 2.4s forwards;
+      }
+    }
+  }
+}
+
+.sub {
+  line-height: 25px;
+}

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { PokemonService } from '../../services/pokemon.service';
+import { Component, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { NgForOf, NgIf, UpperCasePipe } from '@angular/common';
+import { MatAnchor } from '@angular/material/button';
+import { MatCard, MatCardContent } from '@angular/material/card';
 
 @Component({
   selector: 'app-pokemon-details',
@@ -10,25 +11,14 @@ import { NgForOf, NgIf, UpperCasePipe } from '@angular/common';
     UpperCasePipe,
     NgIf,
     NgForOf,
-    RouterLink
+    RouterLink,
+    MatAnchor,
+    MatCard,
+    MatCardContent,
   ],
   templateUrl: './pokemon-details.component.html',
-  styleUrl: './pokemon-details.component.scss'
+  styleUrl: './pokemon-details.component.scss',
 })
-export class PokemonDetailsComponent implements OnInit {
-  pokemon: any;
-
-  constructor(
-    private route: ActivatedRoute,
-    private pokemonService: PokemonService
-  ) { }
-
-  ngOnInit() {
-    this.route.params.subscribe(params => {
-      const name = params['name'];
-      this.pokemonService.getPokemonDetailsByName(name).subscribe(details => {
-        this.pokemon = details;
-      });
-    });
-  }
+export class PokemonDetailsComponent {
+  @Input() pokemon: any;
 }

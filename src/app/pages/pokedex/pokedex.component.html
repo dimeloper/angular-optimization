@@ -1,0 +1,29 @@
+<!--Main banner-->
+<div class="banner">
+  @if (banner != '') {
+    <img [src]="banner" alt="pokemon-banner" />
+  }
+</div>
+<mat-divider></mat-divider>
+<!--Secondary banners-->
+<mat-grid-list [cols]="cols" rowHeight="330px">
+  @for (pokemon of pokemons; track pokemon) {
+    <mat-grid-tile>
+      <mat-card class="pokemon-card">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>{{ pokemon.title }}</mat-card-title>
+            <mat-card-subtitle>Extra large</mat-card-subtitle>
+            <img mat-card-xl-image [src]="pokemon.image" />
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+          {{ pokemon.preview }}
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  }
+</mat-grid-list>
+<mat-divider></mat-divider>
+<!--Dynamic content-->
+<app-pokemon-list />

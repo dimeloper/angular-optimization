@@ -1,16 +1,6 @@
-.back-button {
-  display: inline-block;
-  margin: 20px;
-  padding: 10px 20px;
-  background-color: #ee1515;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-}
-
-.back-button:hover {
-  background-color: #d41414;
+mat-card {
+  color: white;
+  margin: 10px 0;
 }
 
 .pokemon-details {
@@ -18,7 +8,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  margin: 3rem 1.5rem;
 }
 
 .pokemon-image {
@@ -43,7 +33,6 @@
 .pokemon-name {
   font-size: 32px;
   font-weight: bold;
-  color: #333;
   text-transform: capitalize;
   margin-bottom: 10px;
 }
@@ -63,22 +52,18 @@
 
 .pokemon-meta-label {
   font-size: 16px;
-  color: #666;
   margin-bottom: 5px;
 }
 
 .pokemon-meta-value {
   font-size: 20px;
   font-weight: bold;
-  color: #333;
 }
 
 .pokemon-attributes {
-  width: 80%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 20px;
-  margin-top: 20px;
 }
 
 .attribute-card {
