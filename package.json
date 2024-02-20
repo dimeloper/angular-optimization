@@ -8,6 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:angular-optimization-examples": "node dist/angular-optimization-examples/server/server.mjs",
+    "audit:bad-pages": "unlighthouse --site https://ng-pokedex-optimization.netlify.app --urls /pokedex-bad/,/pokemon-bad/ivysaur/,/pokemon-bad/charizard/",
+    "audit:optimized-pages": "unlighthouse --site https://ng-pokedex-optimization.netlify.app --urls /pokedex-optimized/,/pokemon-optimized/ivysaur/,/pokemon-optimized/charizard/",
     "bundle-report": "ng build --configuration production --source-map && source-map-explorer dist/*.js"
   },
   "private": true,
