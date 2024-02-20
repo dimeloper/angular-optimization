@@ -8,7 +8,6 @@ import {
   MatCardSubtitle,
   MatCardTitle,
   MatCardTitleGroup,
-  MatCardXlImage,
 } from '@angular/material/card';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatButton } from '@angular/material/button';
@@ -28,7 +27,6 @@ import { NgOptimizedImage, provideImgixLoader } from '@angular/common';
     MatCardActions,
     MatButton,
     MatCardSubtitle,
-    MatCardXlImage,
     MatCardTitle,
     MatCardTitleGroup,
     MatCardHeader,
