@@ -19,8 +19,10 @@
       </mat-card-header>
       <img
         class="pokemon-teaser"
+        [ngSrc]="pokemon.image"
         [alt]="'Teaser showing ' + pokemon.title"
-        [src]="pokemon.image" />
+        width="160"
+        height="160" />
       <mat-card-content class="pokemon-preview">
         {{ pokemon.preview }}
       </mat-card-content>
