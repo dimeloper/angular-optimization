@@ -1,8 +1,10 @@
 <header>
   <mat-toolbar color="primary">
     <span class="fill-remaining-space">
+      <!-- name and aria-label were only added in the optimized version -->
       <button
         name="menu"
+        aria-label="menu"
         mat-icon-button
         [matMenuTriggerFor]="menu"
         #menuTrigger="matMenuTrigger"
