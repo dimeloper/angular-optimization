@@ -11,7 +11,6 @@ import {
   MatCardXlImage,
 } from '@angular/material/card';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { MatGridList, MatGridTile } from '@angular/material/grid-list';
 import { MatButton } from '@angular/material/button';
 import { PokemonListComponent } from '../../components/pokemon-list/pokemon-list.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -23,8 +22,6 @@ import { NgOptimizedImage, provideImgixLoader } from '@angular/common';
   selector: 'app-pokedex',
   standalone: true,
   imports: [
-    MatGridList,
-    MatGridTile,
     MatCard,
     MatCardImage,
     MatCardContent,
