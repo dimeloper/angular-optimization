@@ -4,6 +4,18 @@
 
 .back-button {
   position: absolute;
-  top: -1.5rem;
+  top: 1rem;
   left: 1rem;
+}
+
+.pokemon-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: -7rem;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
+
 }

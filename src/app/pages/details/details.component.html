@@ -2,5 +2,15 @@
 <a class="back-button" mat-raised-button routerLink="/pokedex">
   &laquo; Back to Pokédex
 </a>
+<!--Main banner-->
+<div class="banner">
+  <img src="../assets/images/pokedex-banner.png" />
+</div>
 
-<app-pokemon-details [pokemon]="pokemon" />
+<div class="pokemon-content">
+  <app-pokemon-details [pokemon]="pokemon" />
+  <app-pokemon-details [pokemon]="pokemon" />
+  <app-pokemon-details [pokemon]="pokemon" />
+</div>
+
+<app-problematic />

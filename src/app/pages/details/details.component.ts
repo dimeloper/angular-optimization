@@ -3,11 +3,17 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PokemonService } from '../../services/pokemon.service';
 import { PokemonDetailsComponent } from '../../components/pokemon-details/pokemon-details.component';
 import { MatAnchor } from '@angular/material/button';
+import { ProblematicComponent } from '../../components/problematic/problematic.component';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [PokemonDetailsComponent, MatAnchor, RouterLink],
+  imports: [
+    PokemonDetailsComponent,
+    MatAnchor,
+    RouterLink,
+    ProblematicComponent,
+  ],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss',
   host: { ngSkipHydration: 'true' },
