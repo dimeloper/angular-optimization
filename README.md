@@ -7,8 +7,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Performance measurements
 
-The idea is the following, we start with a couple of pages that are way from optimized, and we take some initial measurements using [unlighthouse](https://unlighthouse.dev/)*.
-Then we are going to optimize them, while we are aiming for a better measurement in our result pages.
+The idea is the following, we start with a couple of pages that are far from optimized, and we take some initial measurements using [unlighthouse](https://unlighthouse.dev/)*.
+Then we are going to optimize our pages, while we are aiming for a better Core Web Vitals performance and better lighthouse scores overall.
 
 Before optimization - Overview:
 ![overview-bad.png](docs%2Foverview-bad.png)
