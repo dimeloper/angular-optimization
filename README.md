@@ -55,5 +55,6 @@ pnpm audit:optimized-pages
 
 ## Stay in touch
 
+- LinkedIn: [Dimitris Kiriakakis](https://linkedin.com/in/kiriakakis)
 - Instagram: [@dimeloper_](https://instagram.com/dimeloper_)
 - Twitter: [@dimeloper](https://twitter.com/dimeloper)
