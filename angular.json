@@ -31,7 +31,8 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/sitemap.xml"
             ],
             "styles": [
               "@angular/material/prebuilt-themes/pink-bluegrey.css",
