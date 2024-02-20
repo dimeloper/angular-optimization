@@ -13,6 +13,9 @@ Then we are going to optimize them, while we are aiming for a better measurement
 Starting point:
 ![overview-bad.png](docs%2Foverview-bad.png)
 
+Result:
+![overview-optimized.png](docs%2Foverview-optimized.png)
+
 If you want to run your checks yourself you can either go to https://ng-pokedex-optimization.netlify.app/ and use your Chrome's lighthouse (make sure to use an incognito window), 
 or you can download unlighthouse and run the full audit while using the app's sitemaps as parameters.
 
