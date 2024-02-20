@@ -9,7 +9,7 @@
 </div>
 <!-- Secondary banners / teasers -->
 <div class="pokemon-teaser-grid">
-  @for (pokemon of pokemons; track pokemon) {
+  @for (pokemon of pokemons; track $index) {
     <mat-card class="pokemon-card">
       <mat-card-header>
         <mat-card-title-group>
@@ -17,17 +17,28 @@
           <mat-card-subtitle>Extra large</mat-card-subtitle>
         </mat-card-title-group>
       </mat-card-header>
-      @defer (on viewport) {
+      <!-- we utilize server side rendering on the first 4 elements (visible on the mobile viewport -->
+      <!-- reminder: defer will lazy load the element but forces client side rendering -->
+      @if ($index > 3) {
+        @defer (on viewport) {
+          <img
+            mat-card-xl-image
+            class="pokemon-teaser"
+            [alt]="'Teaser showing ' + pokemon.title"
+            [src]="pokemon.image" />
+        } @placeholder {
+          <img
+            class="pokemon-teaser"
+            [alt]="'Teaser showing ' + pokemon.title"
+            src="../assets/images/placeholder.webp" />
+        }
+      } @else {
+        <!-- the rest we can load once they enter the viewport -->
         <img
           mat-card-xl-image
           class="pokemon-teaser"
           [alt]="'Teaser showing ' + pokemon.title"
           [src]="pokemon.image" />
-      } @placeholder {
-        <img
-          class="pokemon-teaser"
-          [alt]="'Teaser showing ' + pokemon.title"
-          src="../assets/images/placeholder.jpeg" />
       }
       <mat-card-content class="pokemon-preview">
         {{ pokemon.preview }}

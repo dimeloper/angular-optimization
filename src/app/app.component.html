@@ -2,6 +2,7 @@
   <mat-toolbar color="primary">
     <span class="fill-remaining-space">
       <button
+        name="menu"
         mat-icon-button
         [matMenuTriggerFor]="menu"
         #menuTrigger="matMenuTrigger"
@@ -10,7 +11,7 @@
       </button>
       <mat-menu #menu="matMenu" [overlapTrigger]="false">
         <span>
-          <button mat-menu-item routerLink="/pokedex">
+          <button mat-menu-item routerLink="/">
             <mat-icon>home</mat-icon>
             <span>Home</span>
           </button>

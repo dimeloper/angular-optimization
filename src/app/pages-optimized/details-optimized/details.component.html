@@ -5,7 +5,7 @@
 <!--Main banner-->
 <div class="banner">
   <img
-    ngSrc="../assets/images/pokedex-banner.png"
+    ngSrc="../assets/images/pokedex-banner.webp"
     placeholder
     fill
     priority
@@ -26,6 +26,9 @@
   @defer (on viewport) {
     <app-problematic />
   } @placeholder {
-    <img class="loading-animation" src="../assets/images/loading.gif" />
+    <img
+      class="loading-animation"
+      alt="loading animation.."
+      src="../assets/images/loading.gif" />
   }
 </div>
