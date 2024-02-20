@@ -1,0 +1,73 @@
+<!-- Main banner -->
+<div class="banner">
+  <img
+    [ngSrc]="banner"
+    placeholder
+    fill
+    priority
+    alt="Pokemon Banner with Pikachu" />
+</div>
+<!-- Secondary banners / teasers -->
+<div class="pokemon-teaser-grid">
+  @for (pokemon of pokemons; track pokemon) {
+    <mat-card class="pokemon-card">
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title>{{ pokemon.title }}</mat-card-title>
+          <mat-card-subtitle>Extra large</mat-card-subtitle>
+        </mat-card-title-group>
+      </mat-card-header>
+      @defer (on viewport) {
+        <img
+          mat-card-xl-image
+          class="pokemon-teaser"
+          [alt]="'Teaser showing ' + pokemon.title"
+          [src]="pokemon.image" />
+      } @placeholder {
+        <img
+          class="pokemon-teaser"
+          [alt]="'Teaser showing ' + pokemon.title"
+          src="../assets/images/placeholder.jpeg" />
+      }
+      <mat-card-content class="pokemon-preview">
+        {{ pokemon.preview }}
+      </mat-card-content>
+    </mat-card>
+  }
+</div>
+
+<!-- Dynamic content -->
+@defer (on viewport) {
+  <app-pokemon-list />
+} @placeholder {
+  <b>Favourite Pokemon</b>
+}
+
+@defer (on viewport) {
+  <div class="button-wrapper">
+    <button mat-raised-button (click)="openDialog()">
+      Pick your favorite via popup form
+    </button>
+    <button mat-raised-button (click)="openForm()">
+      Pick your favorite via inline form
+    </button>
+    <!-- here we secure that no heavy calculation will affect the page load -->
+    <!-- additionally by using @loading we make sure that our INP score will not be affected -->
+    <!-- since showing the form allocates some time to do the calculation -->
+    @if (!hideForm) {
+      @defer {
+        <app-form />
+      } @loading (minimum 500ms) {
+        <img
+          class="loading-animation"
+          alt="loading..."
+          src="../assets/images/loading.gif" />
+      }
+    }
+  </div>
+} @placeholder {
+  <div class="button-wrapper">
+    <button mat-raised-button>Pick your favorite via popup form</button>
+    <button mat-raised-button>Pick your favorite via inline form</button>
+  </div>
+}

@@ -32,7 +32,8 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/sitemap.xml"
+              "src/sitemap-bad.xml",
+              "src/sitemap-optimized.xml"
             ],
             "styles": [
               "@angular/material/prebuilt-themes/pink-bluegrey.css",

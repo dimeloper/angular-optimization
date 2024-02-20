@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { NgForOf } from '@angular/common';
 import { PokemonService } from '../../services/pokemon.service';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -13,7 +13,9 @@ import { RouterLink } from '@angular/router';
 export class PokemonListComponent implements OnInit {
   pokemonList: any[] = [];
 
-  constructor(private pokemonService: PokemonService) {}
+  private pokemonService = inject(PokemonService);
+  private activatedRoute = inject(ActivatedRoute);
+  private router = inject(Router);
 
   ngOnInit() {
     this.getPokemon();
@@ -24,6 +26,19 @@ export class PokemonListComponent implements OnInit {
       const pokemonUrls = response.results.map((p: any) => p.url);
       this.fetchPokemonDetails(pokemonUrls);
     });
+  }
+
+  getPokemonLink(pokemonName: string): string[] {
+    const currentUrl = this.router.url;
+    let baseRoute = '/pokemon';
+
+    if (currentUrl.endsWith('-optimized')) {
+      baseRoute = '/pokemon-optimized';
+    } else if (currentUrl.endsWith('-bad')) {
+      baseRoute = '/pokemon-bad';
+    }
+
+    return [baseRoute, pokemonName];
   }
 
   fetchPokemonDetails(pokemonUrls: string[]) {

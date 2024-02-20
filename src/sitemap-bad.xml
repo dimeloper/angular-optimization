@@ -3,17 +3,17 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://ng-pokedex-optimization.netlify.app/pokedex</loc>
+    <loc>https://ng-pokedex-optimization.netlify.app/pokedex-bad</loc>
     <lastmod>2024-02-T10:13:39+00:00</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://ng-pokedex-optimization.netlify.app/pokemon/ivysaur</loc>
+    <loc>https://ng-pokedex-optimization.netlify.app/pokemon-bad/ivysaur</loc>
     <lastmod>2024-02-T10:13:39+00:00</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://ng-pokedex-optimization.netlify.app/pokemon/charizard</loc>
+    <loc>https://ng-pokedex-optimization.netlify.app/pokemon-bad/charizard</loc>
     <lastmod>2024-02-T10:13:39+00:00</lastmod>
     <priority>1.00</priority>
   </url>

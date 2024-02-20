@@ -2,10 +2,30 @@
   position: relative;
 }
 
+.banner {
+  min-height: 50vh;
+  position: relative;
+  width: 100%;
+  z-index: 0;
+
+  @media (max-width: 400px) {
+    min-height: 45vh;
+  }
+
+  @media(min-width: 960px) {
+    min-height: 480px;
+  }
+
+  > img {
+    object-fit: cover;
+  }
+}
+
 .back-button {
   position: absolute;
   top: 1rem;
   left: 1rem;
+  z-index: 1;
 }
 
 .pokemon-content {
@@ -13,6 +33,7 @@
   flex-direction: row;
   justify-content: center;
   margin-top: -7rem;
+  position: relative;
 
   @media (max-width: 700px) {
     flex-direction: column;

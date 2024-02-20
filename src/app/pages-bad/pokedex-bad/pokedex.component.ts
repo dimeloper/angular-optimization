@@ -97,7 +97,7 @@ export class PokedexComponent implements OnInit {
   private gridByBreakpoint = {
     xl: 3,
     lg: 3,
-    md: 2,
+    md: 3,
     sm: 3,
     xs: 2,
   };

@@ -1,0 +1,61 @@
+.banner {
+  min-height: 50vh;
+  position: relative;
+  width: 100%;
+
+  @media (max-width: 400px) {
+    min-height: 45vh;
+  }
+
+  @media(min-width: 960px) {
+    min-height: 480px;
+  }
+
+  > img {
+    object-fit: cover;
+  }
+}
+
+.pokemon-card {
+  background: white;
+  border: 1px solid #ccc;
+  margin: 0.5rem;
+}
+
+.button-wrapper {
+  text-align: center;
+  padding: 2rem;
+
+  button {
+    margin: 0.5rem;
+  }
+}
+
+.pokemon-teaser-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0;
+  grid-row-gap: 0;
+
+  @media(max-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+}
+
+.pokemon-teaser {
+  max-height: 160px;
+  max-width: 160px;
+}
+
+@media (max-width: 960px) {
+  .pokemon-preview {
+    display: none;
+  }
+}
+
+.problematic-content {
+  text-align: center;
+  width: 100%;
+}

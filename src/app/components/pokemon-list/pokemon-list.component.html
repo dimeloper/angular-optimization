@@ -1,8 +1,9 @@
 <div class="pokedex-container">
+  <b>Favourite Pokemon</b>
   <div class="pokemon-list">
     @for (pokemon of pokemonList; track pokemon) {
       <div class="pokemon-card">
-        <a [routerLink]="['/pokemon', pokemon.name]">
+        <a [routerLink]="getPokemonLink(pokemon.name)">
           <img [src]="pokemon.image" alt="{{ pokemon.name }}" />
           <p class="pokemon-name">{{ pokemon.name }}</p>
         </a>
