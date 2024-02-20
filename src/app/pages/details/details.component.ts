@@ -10,6 +10,7 @@ import { MatAnchor } from '@angular/material/button';
   imports: [PokemonDetailsComponent, MatAnchor, RouterLink],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss',
+  host: { ngSkipHydration: 'true' },
 })
 export class DetailsComponent implements OnInit {
   pokemon: any;

@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  MatCard, MatCardActions,
+  MatCard,
+  MatCardActions,
   MatCardContent,
   MatCardHeader,
   MatCardImage,
   MatCardSubtitle,
-  MatCardTitle, MatCardTitleGroup, MatCardXlImage,
+  MatCardTitle,
+  MatCardTitleGroup,
+  MatCardXlImage,
 } from '@angular/material/card';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatGridList, MatGridTile } from '@angular/material/grid-list';
@@ -34,6 +37,7 @@ import { PokemonListComponent } from '../../components/pokemon-list/pokemon-list
   ],
   templateUrl: './pokedex.component.html',
   styleUrl: './pokedex.component.scss',
+  host: { ngSkipHydration: 'true' },
 })
 export class PokedexComponent implements OnInit {
   public cols = 1;
