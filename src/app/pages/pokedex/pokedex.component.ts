@@ -13,8 +13,11 @@ import {
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatGridList, MatGridTile } from '@angular/material/grid-list';
 import { MatButton } from '@angular/material/button';
-import { MatDivider } from '@angular/material/divider';
 import { PokemonListComponent } from '../../components/pokemon-list/pokemon-list.component';
+import { MatDialog } from '@angular/material/dialog';
+import { PopupComponent } from '../../components/popup/popup.component';
+import { FormComponent } from '../../components/form/form.component';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-pokedex',
@@ -32,8 +35,9 @@ import { PokemonListComponent } from '../../components/pokemon-list/pokemon-list
     MatCardTitle,
     MatCardTitleGroup,
     MatCardHeader,
-    MatDivider,
     PokemonListComponent,
+    FormComponent,
+    NgIf,
   ],
   templateUrl: './pokedex.component.html',
   styleUrl: './pokedex.component.scss',
@@ -41,6 +45,7 @@ import { PokemonListComponent } from '../../components/pokemon-list/pokemon-list
 })
 export class PokedexComponent implements OnInit {
   public cols = 1;
+  public rowHeight = '380px';
 
   public pokemons = [
     {
@@ -59,7 +64,7 @@ export class PokedexComponent implements OnInit {
       title: 'Venusaur',
       image: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/003.png',
       preview:
-        'While it basks in the sun, it can convert the light into energy. As a result, it is more powerful in the summertime.',
+        'While it basks in the sun, it can convert light into energy and it is more powerful in the sun.',
     },
     {
       title: 'Blastoise',
@@ -77,7 +82,7 @@ export class PokedexComponent implements OnInit {
       title: 'Venusaur',
       image: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/003.png',
       preview:
-        'While it basks in the sun, it can convert the light into energy. As a result, it is more powerful in the summertime.',
+        'While it basks in the sun, it can convert light into energy and it is more powerful in the sun.',
     },
   ];
 
@@ -87,15 +92,20 @@ export class PokedexComponent implements OnInit {
   };
   public banner = '';
 
+  public hideForm = true;
+
   private gridByBreakpoint = {
     xl: 3,
     lg: 3,
     md: 2,
-    sm: 1,
-    xs: 1,
+    sm: 3,
+    xs: 2,
   };
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.breakpointObserver
@@ -111,24 +121,43 @@ export class PokedexComponent implements OnInit {
           if (result.breakpoints[Breakpoints.XSmall]) {
             this.banner = this.banners.mobile;
             this.cols = this.gridByBreakpoint.xs;
+            this.rowHeight = '250px';
           }
           if (result.breakpoints[Breakpoints.Small]) {
             this.banner = this.banners.mobile;
             this.cols = this.gridByBreakpoint.sm;
+            this.rowHeight = '250px';
           }
           if (result.breakpoints[Breakpoints.Medium]) {
             this.banner = this.banners.desktop;
             this.cols = this.gridByBreakpoint.md;
+            this.rowHeight = '380px';
           }
           if (result.breakpoints[Breakpoints.Large]) {
             this.banner = this.banners.desktop;
             this.cols = this.gridByBreakpoint.lg;
+            this.rowHeight = '380px';
           }
           if (result.breakpoints[Breakpoints.XLarge]) {
             this.banner = this.banners.desktop;
             this.cols = this.gridByBreakpoint.xl;
+            this.rowHeight = '380px';
           }
         }
       });
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(PopupComponent, {
+      data: { name: 'tester', pokemon: 'pikachu' },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  openForm(): void {
+    this.hideForm = false;
   }
 }

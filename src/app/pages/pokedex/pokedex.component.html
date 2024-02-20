@@ -4,9 +4,8 @@
     <img [src]="banner" />
   }
 </div>
-<mat-divider></mat-divider>
 <!--Secondary banners-->
-<mat-grid-list [cols]="cols" rowHeight="330px">
+<mat-grid-list [cols]="cols" [rowHeight]="rowHeight">
   @for (pokemon of pokemons; track pokemon) {
     <mat-grid-tile>
       <mat-card class="pokemon-card">
@@ -14,16 +13,27 @@
           <mat-card-title-group>
             <mat-card-title>{{ pokemon.title }}</mat-card-title>
             <mat-card-subtitle>Extra large</mat-card-subtitle>
-            <img mat-card-xl-image [src]="pokemon.image" />
           </mat-card-title-group>
         </mat-card-header>
-        <mat-card-content>
+        <img mat-card-xl-image class="pokemon-teaser" [src]="pokemon.image" />
+        <mat-card-content class="pokemon-preview">
           {{ pokemon.preview }}
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
   }
 </mat-grid-list>
-<mat-divider></mat-divider>
 <!--Dynamic content-->
 <app-pokemon-list />
+<div class="button-wrapper">
+  <button mat-raised-button (click)="openDialog()">
+    Pick your favorite via popup form
+  </button>
+  <button mat-raised-button (click)="openForm()">
+    Pick your favorite via inline form
+  </button>
+  <!--  this forces client side rendering to demonstrate the impact of heavy calculations on the client -->
+  @defer {
+    <app-form [hidden]="hideForm" />
+  }
+</div>

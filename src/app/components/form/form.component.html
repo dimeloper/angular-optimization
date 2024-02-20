@@ -1,0 +1,10 @@
+<div class="pokemon-form">
+  <h2 mat-dialog-title>Hi tester</h2>
+  <p>What's your favorite pokemon?</p>
+  <mat-form-field>
+    <mat-label>Favorite Pokemon</mat-label>
+    <input matInput [(ngModel)]="favouritePokemon" />
+  </mat-form-field>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button>Ok</button>
+</div>

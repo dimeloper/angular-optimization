@@ -21,7 +21,7 @@ export class ProblematicComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     const result = this.processData(this.dynamicContent);
-    console.log(`Bubble sort Result: ${result}`);
+    console.log(`=== PROBLEMATIC: Bubble sort Result: ${result}`);
   }
 
   performHeavyTasks() {
@@ -33,7 +33,7 @@ export class ProblematicComponent implements OnInit, AfterViewInit {
 
     // Intentionally perform this calculation for a high value to block the main thread
     const result = fibonacci(40); // This is highly inefficient and blocks the main thread
-    console.log(`Fibonacci Result: ${result}`);
+    console.log(`=== PROBLEMATIC: Fibonacci Result: ${result}`);
   }
 
   processData(item: any) {
