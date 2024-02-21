@@ -1,4 +1,4 @@
-![angular-performance.png](docs/angular-performance.png)
+![angular-performance.png](./docs/angular-performance.png)
 
 # Angular Optimization with Pokemon
 
@@ -14,16 +14,16 @@ The idea is the following, we start with a couple of pages that are far from opt
 Then we are going to optimize our pages, while we are aiming for a better Core Web Vitals performance and better lighthouse scores overall.
 
 Before optimization - Overview:
-![overview-bad.png](docs/overview-bad.png)
+![overview-bad.png](./docs/overview-bad.png)
 
 Before optimization - Main page Web Vitals scores:
-![pokedex-main-bad.png](docs/pokedex-main-bad.png)
+![pokedex-main-bad.png](./docs/pokedex-main-bad.png)
 
 After optimization - Overview:
-![overview-optimized.png](docs/overview-optimized.png)
+![overview-optimized.png](./docs/overview-optimized.png)
 
 After optimization - Main page Web Vitals scores:
-![pokedex-main-optimized.png](docs/pokedex-main-optimized.png)
+![pokedex-main-optimized.png](./docs/pokedex-main-optimized.png)
 
 If you want to run your checks yourself you can either go to https://ng-pokedex-optimization.netlify.app/ and use your Chrome's lighthouse (make sure to use an incognito window),
 or you can download unlighthouse and run the full audit while using the related scripts.
