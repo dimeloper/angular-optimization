@@ -5,9 +5,12 @@
 This is a basic Angular app, featuring a pokedex to showcase some performance optimisation techniques within Angular SPAs.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
 
+If you want to find out more about the optimization techniques we followed, please make sure to check out the related article:
+[Supercharging Angular apps for better performance](https://medium.com/zeal-tech-blog/supercharging-angular-apps-for-better-performance-6814e46bb3c0)
+
 ## Performance measurements
 
-The idea is the following, we start with a couple of pages that are far from optimized, and we take some initial measurements using [unlighthouse](https://unlighthouse.dev/)*.
+The idea is the following, we start with a couple of pages that are far from optimized, and we take some initial measurements using [unlighthouse](https://unlighthouse.dev/)* for faster feedback loops.
 Then we are going to optimize our pages, while we are aiming for a better Core Web Vitals performance and better lighthouse scores overall.
 
 Before optimization - Overview:
