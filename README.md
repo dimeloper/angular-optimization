@@ -1,4 +1,4 @@
-![angular-performance.png](https://github.com/dimeloper/angular-optimization/docs/angular-performance.png)
+![angular-performance.png](https://github.com/dimeloper/angular-optimization/blob/main/docs/angular-performance.png)
 
 # Angular Optimization with Pokemon
 
