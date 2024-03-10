@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   MatCard,
   MatCardActions,
@@ -9,13 +9,13 @@ import {
   MatCardTitle,
   MatCardTitleGroup,
 } from '@angular/material/card';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatButton } from '@angular/material/button';
 import { PokemonListComponent } from '../../components/pokemon-list/pokemon-list.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupComponent } from '../../components/popup/popup.component';
 import { FormComponent } from '../../components/form/form.component';
 import { NgOptimizedImage, provideImgixLoader } from '@angular/common';
+import { MainBannerComponent } from '../../components/main-banner/main-banner.component';
 
 @Component({
   selector: 'app-pokedex',
@@ -33,12 +33,13 @@ import { NgOptimizedImage, provideImgixLoader } from '@angular/common';
     PokemonListComponent,
     FormComponent,
     NgOptimizedImage,
+    MainBannerComponent,
   ],
   templateUrl: './pokedex.component.html',
   styleUrl: './pokedex.component.scss',
   providers: [provideImgixLoader('https://assets.pokemon.com')],
 })
-export class PokedexComponent implements OnInit {
+export class PokedexComponent {
   public pokemons = [
     {
       title: 'Blastoise',
@@ -78,49 +79,9 @@ export class PokedexComponent implements OnInit {
     },
   ];
 
-  public banners = {
-    mobile: '/assets/images/pokemon-banner-mobile.webp',
-    desktop: '/assets/images/pokemon-banner.webp',
-  };
-  // initialising the banner with a default value
-  public banner = this.banners.mobile;
-
   public hideForm = true;
 
-  constructor(
-    private breakpointObserver: BreakpointObserver,
-    public dialog: MatDialog
-  ) {}
-
-  ngOnInit() {
-    this.breakpointObserver
-      .observe([
-        Breakpoints.XSmall,
-        Breakpoints.Small,
-        Breakpoints.Medium,
-        Breakpoints.Large,
-        Breakpoints.XLarge,
-      ])
-      .subscribe(result => {
-        if (result.matches) {
-          if (result.breakpoints[Breakpoints.XSmall]) {
-            this.banner = this.banners.mobile;
-          }
-          if (result.breakpoints[Breakpoints.Small]) {
-            this.banner = this.banners.mobile;
-          }
-          if (result.breakpoints[Breakpoints.Medium]) {
-            this.banner = this.banners.desktop;
-          }
-          if (result.breakpoints[Breakpoints.Large]) {
-            this.banner = this.banners.desktop;
-          }
-          if (result.breakpoints[Breakpoints.XLarge]) {
-            this.banner = this.banners.desktop;
-          }
-        }
-      });
-  }
+  constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PopupComponent, {
