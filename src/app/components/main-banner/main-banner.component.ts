@@ -15,8 +15,12 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 export class MainBannerComponent implements OnInit {
   private breakpointObserver = inject(BreakpointObserver);
 
-  // initialising the value for mobile phones
-  public isMobileBanner = true;
+  public banners = {
+    mobile: '/assets/images/pokemon-banner-mobile.webp',
+    desktop: '/assets/images/pokemon-banner.webp',
+  };
+  // initialising the banner with a default value
+  public banner = this.banners.mobile;
 
   ngOnInit() {
     this.breakpointObserver
@@ -30,19 +34,19 @@ export class MainBannerComponent implements OnInit {
       .subscribe(result => {
         if (result.matches) {
           if (result.breakpoints[Breakpoints.XSmall]) {
-            this.isMobileBanner = true;
+            this.banner = this.banners.mobile;
           }
           if (result.breakpoints[Breakpoints.Small]) {
-            this.isMobileBanner = true;
+            this.banner = this.banners.mobile;
           }
           if (result.breakpoints[Breakpoints.Medium]) {
-            this.isMobileBanner = false;
+            this.banner = this.banners.desktop;
           }
           if (result.breakpoints[Breakpoints.Large]) {
-            this.isMobileBanner = false;
+            this.banner = this.banners.desktop;
           }
           if (result.breakpoints[Breakpoints.XLarge]) {
-            this.isMobileBanner = false;
+            this.banner = this.banners.desktop;
           }
         }
       });
