@@ -54,7 +54,7 @@ export class PopupComponent implements OnInit {
     };
 
     // Compute prime numbers up to a specified limit (e.g., 100000)
-    const limit = 100000;
+    const limit = 10000000;
     const primes = [];
     for (let num = 2; num <= limit; num++) {
       if (isPrime(num)) {
