@@ -15,12 +15,12 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^18.0.3",
-    "@angular/cdk": "17.2.2",
+    "@angular/cdk": "18.0.3",
     "@angular/common": "^18.0.3",
     "@angular/compiler": "^18.0.3",
     "@angular/core": "^18.0.3",
     "@angular/forms": "^18.0.3",
-    "@angular/material": "17.2.2",
+    "@angular/material": "18.0.3",
     "@angular/platform-browser": "^18.0.3",
     "@angular/platform-browser-dynamic": "^18.0.3",
     "@angular/platform-server": "^18.0.3",
@@ -47,9 +47,5 @@
     "prettier": "^3.2.5",
     "source-map-explorer": "^2.5.3",
     "typescript": "~5.4.5"
-  },
-  "volta": {
-    "node": "20.9.0",
-    "pnpm": "8.14.3"
   }
 }
