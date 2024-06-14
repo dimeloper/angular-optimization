@@ -52,42 +52,42 @@ export class PokedexComponent implements OnInit {
       if (!this.isUserAgentMobile) {
         this.banner = this.banners.desktop;
       }
-    }
+    } else {
+      // if mobile, skip the banner overwrite and the breakpoint observer logic
+      if (this.isUserAgentMobile) {
+        return;
+      }
 
-    // if mobile, skip the banner overwrite and the breakpoint observer logic
-    if (this.isUserAgentMobile) {
-      return;
+      // if desktop we also set up breakpoint observers, so that we load the correct banners
+      // in case the user resizes the browser window
+      this.breakpointObserver
+        .observe([
+          Breakpoints.XSmall,
+          Breakpoints.Small,
+          Breakpoints.Medium,
+          Breakpoints.Large,
+          Breakpoints.XLarge,
+        ])
+        .subscribe(result => {
+          if (result.matches) {
+            if (result.breakpoints[Breakpoints.XSmall]) {
+              this.banner = this.banners.mobile;
+            }
+            if (result.breakpoints[Breakpoints.Small]) {
+              this.banner = this.banners.mobile;
+            }
+            if (result.breakpoints[Breakpoints.Medium]) {
+              this.banner = this.banners.desktop;
+            }
+            if (result.breakpoints[Breakpoints.Large]) {
+              this.banner = this.banners.desktop;
+            }
+            if (result.breakpoints[Breakpoints.XLarge]) {
+              this.banner = this.banners.desktop;
+            }
+          }
+        });
     }
-
-    // if desktop we also set up breakpoint observers, so that we load the correct banners
-    // in case the user resizes the browser window
-    this.breakpointObserver
-      .observe([
-        Breakpoints.XSmall,
-        Breakpoints.Small,
-        Breakpoints.Medium,
-        Breakpoints.Large,
-        Breakpoints.XLarge,
-      ])
-      .subscribe(result => {
-        if (result.matches) {
-          if (result.breakpoints[Breakpoints.XSmall]) {
-            this.banner = this.banners.mobile;
-          }
-          if (result.breakpoints[Breakpoints.Small]) {
-            this.banner = this.banners.mobile;
-          }
-          if (result.breakpoints[Breakpoints.Medium]) {
-            this.banner = this.banners.desktop;
-          }
-          if (result.breakpoints[Breakpoints.Large]) {
-            this.banner = this.banners.desktop;
-          }
-          if (result.breakpoints[Breakpoints.XLarge]) {
-            this.banner = this.banners.desktop;
-          }
-        }
-      });
   }
 
   openDialog(): void {
