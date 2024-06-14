@@ -7,6 +7,7 @@ import { FormComponent } from '../../components/form/form.component';
 import { NgOptimizedImage, provideImgixLoader } from '@angular/common';
 import { BannerGridComponent } from '../../components/banner-grid/banner-grid.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-pokedex',
@@ -36,8 +37,19 @@ export class PokedexComponent implements OnInit {
 
   private breakpointObserver = inject(BreakpointObserver);
   private dialog = inject(MatDialog);
+  private deviceService = inject(DeviceDetectorService);
+
+  private isUserAgentMobile = this.deviceService.isMobile();
 
   ngOnInit() {
+    // if mobile, only load the mobile banner
+    if (this.isUserAgentMobile) {
+      this.banner = this.banners.mobile;
+      return;
+    }
+
+    // if desktop we also set up breakpoint observers, so that we load the correct banners
+    // in case the user resizes the browser window
     this.breakpointObserver
       .observe([
         Breakpoints.XSmall,
