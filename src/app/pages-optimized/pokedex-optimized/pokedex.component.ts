@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { PokemonListComponent } from '../../components/pokemon-list/pokemon-list.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -25,7 +25,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
     provideImgixLoader('https://ng-pokedex-optimization.netlify.app/'),
   ],
 })
-export class PokedexComponent implements OnInit {
+export class PokedexComponent {
   public hideForm = true;
 
   public banners = {
@@ -41,10 +41,9 @@ export class PokedexComponent implements OnInit {
 
   private isUserAgentMobile = this.deviceService.isMobile();
 
-  ngOnInit() {
-    // if mobile, only load the mobile banner
+  constructor() {
+    // if mobile, skip the banner overwrite and the breakpoint observer logic
     if (this.isUserAgentMobile) {
-      this.banner = this.banners.mobile;
       return;
     }
 
