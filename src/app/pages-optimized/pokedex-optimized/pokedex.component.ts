@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PopupComponent } from '../../components/popup/popup.component';
 import { FormComponent } from '../../components/form/form.component';
 import {
-  isPlatformServer,
+  isPlatformBrowser,
   NgOptimizedImage,
   provideImgixLoader,
 } from '@angular/common';
@@ -48,11 +48,11 @@ export class PokedexComponent implements OnInit {
   constructor(@Inject(PLATFORM_ID) private platformId: any) {}
 
   public ngOnInit() {
-    if (isPlatformServer(this.platformId)) {
+    if (isPlatformBrowser(this.platformId)) {
       if (!this.isUserAgentMobile) {
         this.banner = this.banners.desktop;
       }
-    } else {
+
       // if mobile, skip the banner overwrite and the breakpoint observer logic
       if (this.isUserAgentMobile) {
         return;
