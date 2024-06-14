@@ -50,6 +50,7 @@ export class PokedexComponent implements OnInit {
 
     // if desktop we also set up breakpoint observers, so that we load the correct banners
     // in case the user resizes the browser window
+    this.banner = this.banners.desktop;
     this.breakpointObserver
       .observe([
         Breakpoints.XSmall,
