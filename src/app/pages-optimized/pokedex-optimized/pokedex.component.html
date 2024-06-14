@@ -1,11 +1,20 @@
 <!-- Main banner -->
 <div class="banner">
-  <img
-    [ngSrc]="banner"
-    placeholder
-    fill
-    priority
-    alt="Pokemon Banner with Pikachu" />
+  @if (isMobile) {
+    <img
+      ngSrc="/assets/images/pokemon-banner-mobile.webp"
+      placeholder
+      fill
+      priority
+      alt="Pokemon Banner with Pikachu" />
+  } @else {
+    <img
+      ngSrc="/assets/images/pokemon-banner.webp"
+      placeholder
+      fill
+      priority
+      alt="Pokemon Banner with Pikachu" />
+  }
 </div>
 <!-- Secondary banners / teasers -->
 <app-banner-grid />

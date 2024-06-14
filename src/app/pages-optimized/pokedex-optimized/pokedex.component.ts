@@ -4,11 +4,7 @@ import { PokemonListComponent } from '../../components/pokemon-list/pokemon-list
 import { MatDialog } from '@angular/material/dialog';
 import { PopupComponent } from '../../components/popup/popup.component';
 import { FormComponent } from '../../components/form/form.component';
-import {
-  isPlatformBrowser,
-  NgOptimizedImage,
-  provideImgixLoader,
-} from '@angular/common';
+import { NgOptimizedImage, provideImgixLoader } from '@angular/common';
 import { BannerGridComponent } from '../../components/banner-grid/banner-grid.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { DeviceDetectorService } from 'ngx-device-detector';
@@ -31,13 +27,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 })
 export class PokedexComponent implements OnInit {
   public hideForm = true;
-
-  public banners = {
-    mobile: '/assets/images/pokemon-banner-mobile.webp',
-    desktop: '/assets/images/pokemon-banner.webp',
-  };
-  // initialising the banner with a default value
-  public banner = this.banners.mobile;
+  public isMobile = true;
 
   private breakpointObserver = inject(BreakpointObserver);
   private dialog = inject(MatDialog);
@@ -48,16 +38,10 @@ export class PokedexComponent implements OnInit {
   constructor(@Inject(PLATFORM_ID) private platformId: any) {}
 
   public ngOnInit() {
-    if (isPlatformBrowser(this.platformId)) {
-      if (!this.isUserAgentMobile) {
-        this.banner = this.banners.desktop;
-      }
-
-      // if mobile, skip the banner overwrite and the breakpoint observer logic
-      if (this.isUserAgentMobile) {
-        return;
-      }
-
+    if (this.isUserAgentMobile) {
+      // if mobile, skip the breakpoint observer logic
+      return;
+    } else {
       // if desktop we also set up breakpoint observers, so that we load the correct banners
       // in case the user resizes the browser window
       this.breakpointObserver
@@ -71,19 +55,19 @@ export class PokedexComponent implements OnInit {
         .subscribe(result => {
           if (result.matches) {
             if (result.breakpoints[Breakpoints.XSmall]) {
-              this.banner = this.banners.mobile;
+              this.isMobile = true;
             }
             if (result.breakpoints[Breakpoints.Small]) {
-              this.banner = this.banners.mobile;
+              this.isMobile = true;
             }
             if (result.breakpoints[Breakpoints.Medium]) {
-              this.banner = this.banners.desktop;
+              this.isMobile = false;
             }
             if (result.breakpoints[Breakpoints.Large]) {
-              this.banner = this.banners.desktop;
+              this.isMobile = false;
             }
             if (result.breakpoints[Breakpoints.XLarge]) {
-              this.banner = this.banners.desktop;
+              this.isMobile = false;
             }
           }
         });
