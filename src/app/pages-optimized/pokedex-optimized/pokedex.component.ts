@@ -4,7 +4,7 @@ import { PokemonListComponent } from '../../components/pokemon-list/pokemon-list
 import { MatDialog } from '@angular/material/dialog';
 import { PopupComponent } from '../../components/popup/popup.component';
 import { FormComponent } from '../../components/form/form.component';
-import { NgOptimizedImage, provideImgixLoader } from '@angular/common';
+import { provideImgixLoader } from '@angular/common';
 import { BannerGridComponent } from '../../components/banner-grid/banner-grid.component';
 import { DeviceDetectorService } from 'ngx-device-detector';
 
@@ -15,7 +15,6 @@ import { DeviceDetectorService } from 'ngx-device-detector';
     MatButton,
     PokemonListComponent,
     FormComponent,
-    NgOptimizedImage,
     BannerGridComponent,
   ],
   templateUrl: './pokedex.component.html',
