@@ -1,24 +1,27 @@
 <!-- Main banner -->
+{{ JSON.stringify(deviceInfo) }}
+@if (isDesktopUserAgent) {
+  DESKTOPPPP
+}
 <div class="banner">
   @if (isDesktopUserAgent) {
     <img
-      src="/assets/images/pokemon-banner.webp"
-      fetchpriority="high"
+      ngSrc="/assets/images/pokemon-banner.webp"
+      placeholder
+      fill
+      priority
       alt="Pokemon Banner with Pikachu" />
   } @else {
     <img
-      src="/assets/images/pokemon-banner-mobile.webp"
-      fetchpriority="high"
+      ngSrc="/assets/images/pokemon-banner-mobile.webp"
+      placeholder
+      fill
+      priority
       alt="Pokemon Banner with Pikachu" />
   }
 </div>
 <!-- Secondary banners / teasers -->
 <app-banner-grid />
-
-{{ JSON.stringify(deviceInfo) }}
-@if (isDesktopUserAgent) {
-  DESKTOPPPP
-}
 
 <!-- Dynamic content -->
 @defer (on viewport) {
