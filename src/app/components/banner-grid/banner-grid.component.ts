@@ -29,37 +29,37 @@ export class BannerGridComponent {
   public pokemons = [
     {
       title: 'Blastoise',
-      image: '/assets/cms2/img/pokedex/full/009.png',
+      image: '/assets/cms2/img/pokedex/detail/009.png',
       preview:
         'It deliberately increases its body weight so it can withstand the recoil of the water jets it fires.',
     },
     {
       title: 'Charizard',
-      image: '/assets/cms2/img/pokedex/full/006.png',
+      image: '/assets/cms2/img/pokedex/detail/006.png',
       preview:
         'If Charizard becomes truly angered, the flame at the tip of its tail burns in a light blue shade.',
     },
     {
       title: 'Venusaur',
-      image: '/assets/cms2/img/pokedex/full/003.png',
+      image: '/assets/cms2/img/pokedex/detail/003.png',
       preview:
         'While it basks in the sun, it can convert light into energy and it is more powerful in the sun.',
     },
     {
       title: 'Blastoise',
-      image: '/assets/cms2/img/pokedex/full/009.png',
+      image: '/assets/cms2/img/pokedex/detail/009.png',
       preview:
         'It deliberately increases its body weight so it can withstand the recoil of the water jets it fires.',
     },
     {
       title: 'Charizard',
-      image: '/assets/cms2/img/pokedex/full/006.png',
+      image: '/assets/cms2/img/pokedex/detail/006.png',
       preview:
         'If Charizard becomes truly angered, the flame at the tip of its tail burns in a light blue shade.',
     },
     {
       title: 'Venusaur',
-      image: '/assets/cms2/img/pokedex/full/003.png',
+      image: '/assets/cms2/img/pokedex/detail/003.png',
       preview:
         'While it basks in the sun, it can convert light into energy and it is more powerful in the sun.',
     },
