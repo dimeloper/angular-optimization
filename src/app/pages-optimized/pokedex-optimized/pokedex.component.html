@@ -1,7 +1,12 @@
 <!-- Main banner -->
 <div class="banner">
   <img
-    [ngSrc]="banner"
+    ngSrc="/assets/images/pokemon-banner-mobile.webp"
+    srcset="
+      /assets/images/pokemon-banner-mobile.webp     576w,
+      /assets/images/pokemon-banner-mobile-2x.webp  992w,
+      /assets/images/pokemon-banner.webp           1920w
+    "
     placeholder
     fill
     priority
