@@ -48,5 +48,8 @@
     "prettier": "^3.2.5",
     "source-map-explorer": "^2.5.3",
     "typescript": "~5.4.5"
+  },
+  "volta": {
+    "node": "20.18.0"
   }
 }
