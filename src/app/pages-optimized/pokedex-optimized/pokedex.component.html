@@ -12,11 +12,12 @@
     priority
     alt="Pokemon Banner with Pikachu" />
 </div>
+
 <!-- Secondary banners / teasers -->
 <app-banner-grid />
 
 <!-- Dynamic content -->
-@defer (on viewport) {
+@defer (on viewport; prefetch on idle) {
   <app-pokemon-list />
 } @placeholder {
   <b>Favourite Pokemon</b>
