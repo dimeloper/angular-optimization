@@ -36,6 +36,7 @@ export class PokedexComponent implements OnInit {
     mobile: '/assets/images/pokemon-banner-mobile.webp',
     desktop: '/assets/images/pokemon-banner.webp',
   };
+
   // initialising the banner with a default value
   public banner = this.banners.mobile;
 
