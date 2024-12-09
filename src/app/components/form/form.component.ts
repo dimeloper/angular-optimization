@@ -1,22 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
-import {
-  MatDialogActions,
-  MatDialogContent,
-  MatDialogTitle,
-} from '@angular/material/dialog';
+import { MatDialogTitle } from '@angular/material/dialog';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'app-form',
-  standalone: true,
   imports: [
     FormsModule,
     MatButton,
-    MatDialogActions,
-    MatDialogContent,
     MatDialogTitle,
     MatFormField,
     MatInput,

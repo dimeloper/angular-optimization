@@ -1,31 +1,23 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { NgForOf } from '@angular/common';
+import { Component, inject } from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-list',
   standalone: true,
-  imports: [NgForOf, RouterLink],
+  imports: [RouterLink],
   templateUrl: './pokemon-list.component.html',
   styleUrl: './pokemon-list.component.scss',
 })
-export class PokemonListComponent implements OnInit {
-  pokemonList: any[] = [];
-
-  private pokemonService = inject(PokemonService);
-  private activatedRoute = inject(ActivatedRoute);
+export class PokemonListComponent {
   private router = inject(Router);
+  private pokemonService = inject(PokemonService);
 
-  ngOnInit() {
-    this.getPokemon();
-  }
+  protected pokemonList = this.pokemonService.pokemonListWithDetails;
 
-  getPokemon() {
-    this.pokemonService.getPokemonList(20, 0).subscribe((response: any) => {
-      const pokemonUrls = response.results.map((p: any) => p.url);
-      this.fetchPokemonDetails(pokemonUrls);
-    });
+  constructor() {
+    // Initialize with default values
+    this.pokemonService.updateListParams(20, 0);
   }
 
   getPokemonLink(pokemonName: string): string[] {
@@ -39,19 +31,5 @@ export class PokemonListComponent implements OnInit {
     }
 
     return [baseRoute, pokemonName];
-  }
-
-  fetchPokemonDetails(pokemonUrls: string[]) {
-    pokemonUrls.forEach(url => {
-      this.pokemonService
-        .getPokemonDetailsByUrl(url)
-        .subscribe((details: any) => {
-          const pokemon = {
-            name: details.name,
-            image: details.sprites.front_default,
-          };
-          this.pokemonList.push(pokemon);
-        });
-    });
   }
 }

@@ -7,21 +7,20 @@ import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { FooterAnimationComponent } from './components/footer-animation/footer-animation.component';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    RouterOutlet,
-    MatToolbar,
-    MatIcon,
-    MatIconButton,
-    MatMenu,
-    MatMenuTrigger,
-    MatMenuItem,
-    RouterLink,
-    FooterAnimationComponent,
-  ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+    selector: 'app-root',
+    imports: [
+        RouterOutlet,
+        MatToolbar,
+        MatIcon,
+        MatIconButton,
+        MatMenu,
+        MatMenuTrigger,
+        MatMenuItem,
+        RouterLink,
+        FooterAnimationComponent,
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {
   @ViewChild('toggleButton') toggleButton!: ElementRef;

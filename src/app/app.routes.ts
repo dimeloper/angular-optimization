@@ -17,7 +17,7 @@ export const routes: Routes = [
     path: 'pokemon-bad/:name',
     loadComponent: () =>
       import('./pages-bad/details-bad/details.component').then(
-        m => m.DetailsComponent
+        m => m.DetailsBadPageComponent
       ),
   },
   {
@@ -31,7 +31,7 @@ export const routes: Routes = [
     path: 'pokemon-optimized/:name',
     loadComponent: () =>
       import('./pages-optimized/details-optimized/details.component').then(
-        m => m.DetailsComponent
+        m => m.DetailsOptimizedPageComponent
       ),
   },
   { path: '', redirectTo: '/pokedex', pathMatch: 'full' },

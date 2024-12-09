@@ -18,21 +18,20 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'app-popup',
-  standalone: true,
-  imports: [
-    MatDialogContent,
-    MatLabel,
-    MatFormField,
-    MatDialogActions,
-    MatButton,
-    FormsModule,
-    MatInput,
-    MatDialogClose,
-    MatDialogTitle,
-  ],
-  templateUrl: './popup.component.html',
-  styleUrl: './popup.component.scss',
+    selector: 'app-popup',
+    imports: [
+        MatDialogContent,
+        MatLabel,
+        MatFormField,
+        MatDialogActions,
+        MatButton,
+        FormsModule,
+        MatInput,
+        MatDialogClose,
+        MatDialogTitle,
+    ],
+    templateUrl: './popup.component.html',
+    styleUrl: './popup.component.scss'
 })
 export class PopupComponent implements OnInit {
   constructor(

@@ -10,20 +10,19 @@ import {
 import { NgOptimizedImage, provideImgixLoader } from '@angular/common';
 
 @Component({
-  selector: 'app-banner-grid',
-  standalone: true,
-  imports: [
-    MatCard,
-    MatCardSubtitle,
-    MatCardTitle,
-    MatCardHeader,
-    MatCardTitleGroup,
-    MatCardContent,
-    NgOptimizedImage,
-  ],
-  templateUrl: './banner-grid.component.html',
-  styleUrl: './banner-grid.component.scss',
-  providers: [provideImgixLoader('https://assets.pokemon.com')],
+    selector: 'app-banner-grid',
+    imports: [
+        MatCard,
+        MatCardSubtitle,
+        MatCardTitle,
+        MatCardHeader,
+        MatCardTitleGroup,
+        MatCardContent,
+        NgOptimizedImage,
+    ],
+    templateUrl: './banner-grid.component.html',
+    styleUrl: './banner-grid.component.scss',
+    providers: [provideImgixLoader('https://assets.pokemon.com')]
 })
 export class BannerGridComponent {
   public pokemons = [

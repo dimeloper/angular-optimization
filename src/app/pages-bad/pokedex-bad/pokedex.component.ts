@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {
   MatCard,
-  MatCardActions,
   MatCardContent,
   MatCardHeader,
-  MatCardImage,
   MatCardSubtitle,
   MatCardTitle,
   MatCardTitleGroup,
@@ -17,18 +15,14 @@ import { PokemonListComponent } from '../../components/pokemon-list/pokemon-list
 import { MatDialog } from '@angular/material/dialog';
 import { PopupComponent } from '../../components/popup/popup.component';
 import { FormComponent } from '../../components/form/form.component';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-pokedex',
-  standalone: true,
   imports: [
     MatGridList,
     MatGridTile,
     MatCard,
-    MatCardImage,
     MatCardContent,
-    MatCardActions,
     MatButton,
     MatCardSubtitle,
     MatCardXlImage,
@@ -37,7 +31,6 @@ import { NgIf } from '@angular/common';
     MatCardHeader,
     PokemonListComponent,
     FormComponent,
-    NgIf,
   ],
   templateUrl: './pokedex.component.html',
   styleUrl: './pokedex.component.scss',

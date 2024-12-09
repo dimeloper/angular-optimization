@@ -5,7 +5,7 @@
 <!--Main banner-->
 <div class="banner">
   <img
-    ngSrc="../assets/images/pokedex-banner.webp"
+    ngSrc="/assets/images/pokedex-banner.webp"
     placeholder
     fill
     priority
@@ -15,9 +15,7 @@
 <div class="pokemon-content">
   <!--  here we leave the server side rendering do its magic :) -->
   <!--  usage of defer would force client side rendering and slow down the rendering -->
-  <app-pokemon-details [pokemon]="pokemon" />
-  <app-pokemon-details [pokemon]="pokemon" />
-  <app-pokemon-details [pokemon]="pokemon" />
+  <app-pokemon-details [pokemon]="pokemonDetails.value()" />
 </div>
 
 <!--since here we have bouncing content we also need to make sure that it won't cause layout shift -->
