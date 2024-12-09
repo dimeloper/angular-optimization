@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   MatCard,
   MatCardContent,
@@ -37,6 +37,9 @@ import { FormComponent } from '../../components/form/form.component';
   host: { ngSkipHydration: 'true' },
 })
 export class PokedexComponent implements OnInit {
+  private breakpointObserver = inject(BreakpointObserver);
+  dialog = inject(MatDialog);
+
   public cols = 1;
   public rowHeight = '380px';
 
@@ -94,11 +97,6 @@ export class PokedexComponent implements OnInit {
     sm: 3,
     xs: 2,
   };
-
-  constructor(
-    private breakpointObserver: BreakpointObserver,
-    public dialog: MatDialog
-  ) {}
 
   ngOnInit() {
     this.breakpointObserver

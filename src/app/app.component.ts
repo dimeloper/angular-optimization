@@ -1,4 +1,10 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  inject,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatToolbar } from '@angular/material/toolbar';
 import { MatIcon } from '@angular/material/icon';
@@ -7,26 +13,28 @@ import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { FooterAnimationComponent } from './components/footer-animation/footer-animation.component';
 
 @Component({
-    selector: 'app-root',
-    imports: [
-        RouterOutlet,
-        MatToolbar,
-        MatIcon,
-        MatIconButton,
-        MatMenu,
-        MatMenuTrigger,
-        MatMenuItem,
-        RouterLink,
-        FooterAnimationComponent,
-    ],
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.scss'
+  selector: 'app-root',
+  imports: [
+    RouterOutlet,
+    MatToolbar,
+    MatIcon,
+    MatIconButton,
+    MatMenu,
+    MatMenuTrigger,
+    MatMenuItem,
+    RouterLink,
+    FooterAnimationComponent,
+  ],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  private renderer = inject(Renderer2);
+
   @ViewChild('toggleButton') toggleButton!: ElementRef;
   @ViewChild('menuTrigger') menuTrigger!: ElementRef;
 
-  constructor(private renderer: Renderer2) {
+  constructor() {
     /**
      * This events get called by all clicks on the page
      */
