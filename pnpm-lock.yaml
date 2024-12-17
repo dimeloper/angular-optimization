@@ -45,7 +45,7 @@ importers:
         specifier: ^19.0.5
         version: 19.0.5(p65rmpcfnsrom4vlman4uc4sry)
       '@netlify/angular-runtime':
-        specifier: ^2.2.1
+        specifier: ^2.1.0
         version: 2.2.1
       express:
         specifier: ^4.18.2
