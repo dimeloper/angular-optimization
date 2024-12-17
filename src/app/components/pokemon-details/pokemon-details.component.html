@@ -1,22 +1,22 @@
-@if (pokemon && pokemon.sprites) {
+@if (pokemon() && pokemon().sprites) {
   <div class="pokemon-details">
     <div class="pokemon-image">
-      <img [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}" />
+      <img [src]="pokemon().sprites.front_default" alt="{{ pokemon().name }}" />
     </div>
 
     <div class="pokemon-info">
-      <h2 class="pokemon-name">{{ pokemon.name | uppercase }}</h2>
+      <h2 class="pokemon-name">{{ pokemon().name | uppercase }}</h2>
 
       <mat-card>
         <mat-card-content>
           <div class="pokemon-meta">
             <div>
               <div class="pokemon-meta-label">Height</div>
-              <div class="pokemon-meta-value">{{ pokemon.height }} dm</div>
+              <div class="pokemon-meta-value">{{ pokemon().height }} dm</div>
             </div>
             <div>
               <div class="pokemon-meta-label">Weight</div>
-              <div class="pokemon-meta-value">{{ pokemon.weight }} hg</div>
+              <div class="pokemon-meta-value">{{ pokemon().weight }} hg</div>
             </div>
           </div>
         </mat-card-content>
@@ -25,20 +25,22 @@
       <mat-card>
         <mat-card-content>
           <div class="pokemon-attributes">
-            <div class="attribute-card" *ngFor="let type of pokemon.types">
-              <div class="attribute-name">Type</div>
-              <div class="attribute-value">
-                {{ type.type.name | uppercase }}
+            @for (type of pokemon().types; track type.type.name) {
+              <div class="attribute-card">
+                <div class="attribute-name">Type</div>
+                <div class="attribute-value">
+                  {{ type.type.name | uppercase }}
+                </div>
               </div>
-            </div>
-            <div
-              class="attribute-card"
-              *ngFor="let ability of pokemon.abilities">
-              <div class="attribute-name">Ability</div>
-              <div class="attribute-value">
-                {{ ability.ability.name | uppercase }}
+            }
+            @for (ability of pokemon().abilities; track ability.ability.name) {
+              <div class="attribute-card">
+                <div class="attribute-name">Ability</div>
+                <div class="attribute-value">
+                  {{ ability.ability.name | uppercase }}
+                </div>
               </div>
-            </div>
+            }
           </div>
         </mat-card-content>
       </mat-card>

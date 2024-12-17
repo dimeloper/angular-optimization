@@ -3,7 +3,7 @@
 }
 
 .banner {
-  min-height: 50vh;
+  height: 300px;
   position: relative;
   width: 100%;
   z-index: 0;
@@ -34,6 +34,7 @@
   justify-content: center;
   margin-top: -7rem;
   position: relative;
+  min-height: 684px;
 
   @media (max-width: 700px) {
     flex-direction: column;
