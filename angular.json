@@ -42,9 +42,9 @@
             ],
             "scripts": [],
             "server": "src/main.server.ts",
-            "prerender": true,
+            "outputMode": "server",
             "ssr": {
-              "entry": "server.ts"
+              "entry": "src/server.ts"
             }
           },
           "configurations": {
@@ -52,13 +52,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
                 }
               ],
               "outputHashing": "all"
@@ -72,7 +72,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular/build:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
               "buildTarget": "angular-optimization-examples:build:production"
@@ -90,17 +90,18 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": [
               "zone.js",
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
             ],
             "styles": [
               "@angular/material/prebuilt-themes/pink-bluegrey.css",

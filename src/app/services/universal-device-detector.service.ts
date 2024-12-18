@@ -1,7 +1,6 @@
-import { inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { inject, Injectable, PLATFORM_ID, REQUEST } from '@angular/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { isPlatformServer } from '@angular/common';
-import { REQUEST } from '../../server.tokens';
 
 @Injectable({
   providedIn: 'root',
