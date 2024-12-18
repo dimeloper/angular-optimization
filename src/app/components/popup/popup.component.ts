@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialogActions,
@@ -19,7 +19,6 @@ export interface DialogData {
 
 @Component({
   selector: 'app-popup',
-  standalone: true,
   imports: [
     MatDialogContent,
     MatLabel,
@@ -35,10 +34,8 @@ export interface DialogData {
   styleUrl: './popup.component.scss',
 })
 export class PopupComponent implements OnInit {
-  constructor(
-    public dialogRef: MatDialogRef<PopupComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) {}
+  dialogRef = inject<MatDialogRef<PopupComponent>>(MatDialogRef);
+  data = inject<DialogData>(MAT_DIALOG_DATA);
 
   ngOnInit() {
     this.performHeavyTasks();

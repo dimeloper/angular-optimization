@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   MatCard,
-  MatCardActions,
   MatCardContent,
   MatCardHeader,
-  MatCardImage,
   MatCardSubtitle,
   MatCardTitle,
   MatCardTitleGroup,
@@ -17,18 +15,14 @@ import { PokemonListComponent } from '../../components/pokemon-list/pokemon-list
 import { MatDialog } from '@angular/material/dialog';
 import { PopupComponent } from '../../components/popup/popup.component';
 import { FormComponent } from '../../components/form/form.component';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-pokedex',
-  standalone: true,
   imports: [
     MatGridList,
     MatGridTile,
     MatCard,
-    MatCardImage,
     MatCardContent,
-    MatCardActions,
     MatButton,
     MatCardSubtitle,
     MatCardXlImage,
@@ -37,13 +31,15 @@ import { NgIf } from '@angular/common';
     MatCardHeader,
     PokemonListComponent,
     FormComponent,
-    NgIf,
   ],
   templateUrl: './pokedex.component.html',
   styleUrl: './pokedex.component.scss',
   host: { ngSkipHydration: 'true' },
 })
 export class PokedexComponent implements OnInit {
+  private breakpointObserver = inject(BreakpointObserver);
+  dialog = inject(MatDialog);
+
   public cols = 1;
   public rowHeight = '380px';
 
@@ -101,11 +97,6 @@ export class PokedexComponent implements OnInit {
     sm: 3,
     xs: 2,
   };
-
-  constructor(
-    private breakpointObserver: BreakpointObserver,
-    public dialog: MatDialog
-  ) {}
 
   ngOnInit() {
     this.breakpointObserver

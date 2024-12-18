@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: 'pokedex',
+    path: '',
     loadComponent: () =>
       import('./components/intro/intro.component').then(m => m.IntroComponent),
   },
@@ -17,7 +17,7 @@ export const routes: Routes = [
     path: 'pokemon-bad/:name',
     loadComponent: () =>
       import('./pages-bad/details-bad/details.component').then(
-        m => m.DetailsComponent
+        m => m.DetailsBadPageComponent
       ),
   },
   {
@@ -31,8 +31,8 @@ export const routes: Routes = [
     path: 'pokemon-optimized/:name',
     loadComponent: () =>
       import('./pages-optimized/details-optimized/details.component').then(
-        m => m.DetailsComponent
+        m => m.DetailsOptimizedPageComponent
       ),
   },
-  { path: '', redirectTo: '/pokedex', pathMatch: 'full' },
+  { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];

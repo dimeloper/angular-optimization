@@ -1,4 +1,10 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  inject,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatToolbar } from '@angular/material/toolbar';
 import { MatIcon } from '@angular/material/icon';
@@ -8,7 +14,6 @@ import { FooterAnimationComponent } from './components/footer-animation/footer-a
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   imports: [
     RouterOutlet,
     MatToolbar,
@@ -24,10 +29,12 @@ import { FooterAnimationComponent } from './components/footer-animation/footer-a
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  private renderer = inject(Renderer2);
+
   @ViewChild('toggleButton') toggleButton!: ElementRef;
   @ViewChild('menuTrigger') menuTrigger!: ElementRef;
 
-  constructor(private renderer: Renderer2) {
+  constructor() {
     /**
      * This events get called by all clicks on the page
      */
