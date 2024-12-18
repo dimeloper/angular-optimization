@@ -3,10 +3,14 @@
 # Angular Optimization with Pokemon
 
 This is a basic Angular app, featuring a pokedex to showcase some performance optimisation techniques within Angular SPAs.
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
+This project was generated with the [Angular CLI](https://github.com/angular/angular-cli).
 
 If you want to find out more about the optimization techniques we followed, please make sure to check out the related article:
 [Supercharging Angular apps for better performance](https://medium.com/zeal-tech-blog/supercharging-angular-apps-for-better-performance-6814e46bb3c0)
+
+## Update to version 19
+
+The project utilises Angular version 19 and most of its latest features. If you want to review the changes so as to utilise the latest features in your project too, here is the related PR: [Update project to Angular v19](https://github.com/dimeloper/angular-optimization/pull/9).
 
 ## Performance measurements
 
