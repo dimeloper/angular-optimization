@@ -58,6 +58,9 @@ export class AppComponent {
         this.menuTrigger.nativeElement.closeMenu();
       }
     });
+
+    this.title = 'angular-optimization-examples';
+    console.log('test');
   }
 
   title = 'PokeDex App';
