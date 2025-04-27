@@ -8,19 +8,19 @@ import { NgOptimizedImage, provideImgixLoader } from '@angular/common';
 import { BannerGridComponent } from '../../components/banner-grid/banner-grid.component';
 
 @Component({
-    selector: 'app-pokedex',
-    imports: [
-        MatButton,
-        PokemonListComponent,
-        FormComponent,
-        NgOptimizedImage,
-        BannerGridComponent,
-    ],
-    templateUrl: './pokedex.component.html',
-    styleUrl: './pokedex.component.scss',
-    providers: [
-        provideImgixLoader('https://ng-pokedex-optimization.netlify.app/'),
-    ]
+  selector: 'app-pokedex',
+  imports: [
+    MatButton,
+    PokemonListComponent,
+    FormComponent,
+    NgOptimizedImage,
+    BannerGridComponent,
+  ],
+  templateUrl: './pokedex.component.html',
+  styleUrl: './pokedex.component.scss',
+  providers: [
+    provideImgixLoader('https://ng-pokedex-optimization.netlify.app/'),
+  ],
 })
 export class PokedexComponent {
   public hideForm = true;

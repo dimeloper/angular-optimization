@@ -8,10 +8,9 @@ describe('FooterAnimationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FooterAnimationComponent]
-    })
-    .compileComponents();
-    
+      imports: [FooterAnimationComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(FooterAnimationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
