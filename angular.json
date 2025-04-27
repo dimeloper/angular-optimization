@@ -107,7 +107,8 @@
               "@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "browsers": "ChromeHeadless"
           }
         },
         "lint": {

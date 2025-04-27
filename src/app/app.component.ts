@@ -59,7 +59,6 @@ export class AppComponent {
       }
     });
 
-    this.title = 'angular-optimization-examples';
     console.log('test');
   }
 

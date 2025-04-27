@@ -56,6 +56,15 @@ pnpm audit:optimized-pages
 
 [DEVELOPER.md](DEVELOPER.md)
 
+## CI/CD Setup
+
+The project uses GitHub Actions for continuous integration. The workflow runs on every pull request to the main branch and performs the following checks:
+
+- Linting: Runs ESLint to check code quality
+- Tests: Runs unit tests in a headless Chrome environment
+
+The workflow configuration can be found in `.github/workflows/pr-checks.yml`.
+
 ## Recommended Web Vitals blog post
 
 [Navigating the Waters of Core Web Vitals in 2024](https://medium.com/@dimeloper/navigating-the-waters-of-core-web-vitals-in-2024-3cd6a08666d9)
