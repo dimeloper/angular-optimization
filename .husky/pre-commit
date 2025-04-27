@@ -1,0 +1,2 @@
+pnpm run lint || exit 1
+pnpm run format:check || exit 1
