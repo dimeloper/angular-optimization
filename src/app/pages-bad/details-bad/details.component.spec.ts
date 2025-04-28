@@ -1,45 +1,50 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { TestBed } from '@angular/core/testing';
 import { DetailsBadPageComponent } from './details.component';
-import { RouterTestingModule } from '@angular/router/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PokemonService } from '../../services/pokemon.service';
-import { BehaviorSubject, of } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 describe('DetailsBadPageComponent', () => {
+  let mockActivatedRoute: ActivatedRoute;
+  let mockPokemonService: PokemonService;
   let component: DetailsBadPageComponent;
-  let fixture: ComponentFixture<DetailsBadPageComponent>;
-  let mockPokemonService: jasmine.SpyObj<PokemonService>;
 
-  beforeEach(async () => {
-    const mockPokemonDetails = {
-      isLoading: () => false,
-      error: () => null,
-      value: () => null,
-    };
+  beforeEach(() => {
+    mockActivatedRoute = {
+      params: of({ name: 'pikachu' }), // fake param observable
+    } as unknown as ActivatedRoute;
 
-    mockPokemonService = jasmine.createSpyObj(
-      'PokemonService',
-      ['setSelectedPokemon'],
-      {
-        pokemonDetails: mockPokemonDetails,
-      }
-    );
+    mockPokemonService = {
+      pokemonDetails: {},
+      setSelectedPokemon: vi.fn(),
+    } as unknown as PokemonService;
 
-    await TestBed.configureTestingModule({
-      imports: [
-        DetailsBadPageComponent,
-        RouterTestingModule,
-        BrowserAnimationsModule,
+    TestBed.configureTestingModule({
+      imports: [DetailsBadPageComponent], // because it's a standalone component
+      providers: [
+        { provide: ActivatedRoute, useValue: mockActivatedRoute },
+        { provide: PokemonService, useValue: mockPokemonService },
       ],
-      providers: [{ provide: PokemonService, useValue: mockPokemonService }],
-    }).compileComponents();
+    });
 
-    fixture = TestBed.createComponent(DetailsBadPageComponent);
+    const fixture = TestBed.createComponent(DetailsBadPageComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call setSelectedPokemon with param name on init', () => {
+    expect(mockPokemonService.setSelectedPokemon).toHaveBeenCalledWith(
+      'pikachu'
+    );
+  });
+
+  it('should expose pokemonDetails from the service', () => {
+    expect((component as any).pokemonDetails).toBe(
+      mockPokemonService.pokemonDetails
+    );
   });
 });

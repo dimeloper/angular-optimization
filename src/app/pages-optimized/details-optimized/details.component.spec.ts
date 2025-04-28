@@ -3,12 +3,19 @@ import { DetailsOptimizedPageComponent } from './details.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PokemonService } from '../../services/pokemon.service';
-import { BehaviorSubject, of } from 'rxjs';
+import { vi } from 'vitest';
 
 describe('DetailsOptimizedPageComponent', () => {
   let component: DetailsOptimizedPageComponent;
   let fixture: ComponentFixture<DetailsOptimizedPageComponent>;
-  let mockPokemonService: jasmine.SpyObj<PokemonService>;
+  let mockPokemonService: {
+    setSelectedPokemon: ReturnType<typeof vi.fn>;
+    pokemonDetails: {
+      isLoading: () => boolean;
+      error: () => any;
+      value: () => any;
+    };
+  };
 
   beforeEach(async () => {
     const mockPokemonDetails = {
@@ -17,13 +24,10 @@ describe('DetailsOptimizedPageComponent', () => {
       value: () => null,
     };
 
-    mockPokemonService = jasmine.createSpyObj(
-      'PokemonService',
-      ['setSelectedPokemon'],
-      {
-        pokemonDetails: mockPokemonDetails,
-      }
-    );
+    mockPokemonService = {
+      setSelectedPokemon: vi.fn(),
+      pokemonDetails: mockPokemonDetails,
+    };
 
     await TestBed.configureTestingModule({
       imports: [

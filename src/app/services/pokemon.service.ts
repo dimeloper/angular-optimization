@@ -54,16 +54,25 @@ export class PokemonService {
       const name = params.request;
       if (!name) throw new Error('No Pokemon name provided');
 
-      const response = await fetch(
-        `${this.baseUrl}/pokemon/${name.toLowerCase()}`,
-        { signal: params.abortSignal }
-      );
+      try {
+        const response = await fetch(
+          `${this.baseUrl}/pokemon/${name.toLowerCase()}`,
+          { signal: params.abortSignal }
+        );
 
-      if (!response.ok) {
-        throw new Error(`Failed to fetch Pokemon: ${response.statusText}`);
+        if (!response.ok) {
+          throw new Error(
+            `Failed to fetch Pokemon: ${response.status} ${response.statusText}`
+          );
+        }
+
+        return (await response.json()) as Pokemon;
+      } catch (error) {
+        console.error('Error fetching Pokemon details:', error);
+        throw new Error(
+          'Unable to fetch Pokemon details. Please try again later.'
+        );
       }
-
-      return (await response.json()) as Pokemon;
     },
   });
 
@@ -74,17 +83,31 @@ export class PokemonService {
     request: computed(() => this.pokemonList.value()?.results ?? []),
     loader: async params => {
       const pokemonUrls = params.request;
-      const details = await Promise.all(
-        pokemonUrls.map(async ({ url }) => {
-          const response = await fetch(url, { signal: params.abortSignal });
-          const data = (await response.json()) as Pokemon;
-          return {
-            name: data.name,
-            image: data.sprites.front_default,
-          };
-        })
-      );
-      return details;
+      try {
+        const details = await Promise.all(
+          pokemonUrls.map(async ({ url }) => {
+            const response = await fetch(url, { signal: params.abortSignal });
+
+            if (!response.ok) {
+              throw new Error(
+                `Failed to fetch Pokemon details from ${url}: ${response.status} ${response.statusText}`
+              );
+            }
+
+            const data = (await response.json()) as Pokemon;
+            return {
+              name: data.name,
+              image: data.sprites.front_default,
+            };
+          })
+        );
+        return details;
+      } catch (error) {
+        console.error('Error fetching Pokemon list with details:', error);
+        throw new Error(
+          'Unable to fetch Pokemon list with details. Please try again later.'
+        );
+      }
     },
   });
 
