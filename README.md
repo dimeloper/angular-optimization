@@ -2,11 +2,30 @@
 
 # Angular Optimization with Pokemon
 
-This is a basic Angular app, featuring a pokedex to showcase some performance optimisation techniques within Angular SPAs.
-This project was generated with the [Angular CLI](https://github.com/angular/angular-cli).
+## Table of Contents
 
-If you want to find out more about the optimization techniques we followed, please make sure to check out the related article:
-[Supercharging Angular apps for better performance](https://medium.com/zeal-tech-blog/supercharging-angular-apps-for-better-performance-6814e46bb3c0)
+1. [Introduction](#angular-optimization-with-pokemon)
+2. [Update to Version 19](#update-to-version-19)
+3. [Performance Measurements](#performance-measurements)
+4. [Optimization Techniques Summary](#optimization-techniques-summary)
+5. [Development Documentation](#development-documentation)
+6. [CI/CD Setup](#cicd-setup)
+7. [Recommended Web Vitals Blog Post](#recommended-web-vitals-blog-post)
+8. [Stay in Touch](#stay-in-touch)
+
+## Optimization Techniques Summary
+
+This project demonstrates several optimization techniques to improve Angular app performance:
+
+- **Lazy Loading**: Modules and components are loaded only when needed, reducing initial load time.
+- **OnPush Change Detection**: Optimizes component rendering by checking only specific inputs for changes.
+- **Server-Side Rendering (SSR)**: Improves performance and SEO by pre-rendering pages on the server.
+- **Image Optimization**: Uses modern formats like WebP and responsive images for faster loading.
+- **Code Splitting**: Breaks the application into smaller bundles to load only the necessary code.
+- **Preloading Strategies**: Preloads critical resources to improve navigation speed.
+- **Efficient State Management**: Minimizes unnecessary state updates and improves data flow.
+
+For more details, refer to the related article: [Supercharging Angular apps for better performance](https://medium.com/zeal-tech-blog/supercharging-angular-apps-for-better-performance-6814e46bb3c0).
 
 ## Update to version 19
 
@@ -14,7 +33,7 @@ The project utilises Angular version 19 and most of its latest features. If you 
 
 ## Performance measurements
 
-The idea is the following, we start with a couple of pages that are far from optimized, and we take some initial measurements using [unlighthouse](https://unlighthouse.dev/)* for faster feedback loops.
+The idea is the following, we start with a couple of pages that are far from optimized, and we take some initial measurements using [unlighthouse](https://unlighthouse.dev/)\* for faster feedback loops.
 Then we are going to optimize our pages, while we are aiming for a better Core Web Vitals performance and better lighthouse scores overall.
 
 Before optimization - Overview:
@@ -50,7 +69,7 @@ Audit the optimized pages (after optimization).
 pnpm audit:optimized-pages
 ```
 
-*Unlighthouse is a tool that is able to scan our entire site with Google Lighthouse in a few minutes. Open source, fully configurable with minimal setup.
+\*Unlighthouse is a tool that is able to scan our entire site with Google Lighthouse in a few minutes. Open source, fully configurable with minimal setup.
 
 ## Development documentation
 
@@ -72,5 +91,5 @@ The workflow configuration can be found in `.github/workflows/pr-checks.yml`.
 ## Stay in touch
 
 - LinkedIn: [Dimitris Kiriakakis](https://linkedin.com/in/kiriakakis)
-- Instagram: [@dimeloper_](https://instagram.com/dimeloper_)
+- Instagram: [@dimeloper\_](https://instagram.com/dimeloper_)
 - Twitter: [@dimeloper](https://twitter.com/dimeloper)
