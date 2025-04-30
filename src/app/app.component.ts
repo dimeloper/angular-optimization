@@ -58,8 +58,6 @@ export class AppComponent {
         this.menuTrigger.nativeElement.closeMenu();
       }
     });
-
-    console.log('test');
   }
 
   title = 'PokeDex App';

@@ -1,30 +1,57 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { PopupComponent } from './popup.component';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { TestBed } from '@angular/core/testing';
+import { PopupComponent, DialogData } from './popup.component';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 describe('PopupComponent', () => {
   let component: PopupComponent;
-  let fixture: ComponentFixture<PopupComponent>;
-  let mockDialogRef: jasmine.SpyObj<MatDialogRef<PopupComponent>>;
+  let mockDialogRef: MatDialogRef<PopupComponent>;
+  let mockDialogData: DialogData;
 
-  beforeEach(async () => {
-    mockDialogRef = jasmine.createSpyObj('MatDialogRef', ['close']);
+  beforeEach(() => {
+    mockDialogRef = {
+      close: vi.fn(),
+    } as unknown as MatDialogRef<PopupComponent>;
 
-    await TestBed.configureTestingModule({
-      imports: [PopupComponent, BrowserAnimationsModule],
+    mockDialogData = {
+      name: 'Ash',
+      pokemon: 'Pikachu',
+    };
+
+    TestBed.configureTestingModule({
+      imports: [PopupComponent], // because it's a standalone component
       providers: [
         { provide: MatDialogRef, useValue: mockDialogRef },
-        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MAT_DIALOG_DATA, useValue: mockDialogData },
       ],
-    }).compileComponents();
+    });
 
-    fixture = TestBed.createComponent(PopupComponent);
+    // IMPORTANT: Prevent performHeavyTasks from running and slowing tests
+    vi.spyOn(PopupComponent.prototype, 'performHeavyTasks').mockImplementation(
+      () => {}
+    );
+
+    const fixture = TestBed.createComponent(PopupComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should inject dialog data correctly', () => {
+    expect(component.data.name).toBe('Ash');
+    expect(component.data.pokemon).toBe('Pikachu');
+  });
+
+  it('should call performHeavyTasks in ngOnInit', () => {
+    const spy = vi.spyOn(component, 'performHeavyTasks');
+    component.ngOnInit();
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it('should close the dialog when onNoClick is called', () => {
+    component.onNoClick();
+    expect(mockDialogRef.close).toHaveBeenCalled();
   });
 });
