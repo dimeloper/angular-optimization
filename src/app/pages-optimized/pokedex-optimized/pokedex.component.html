@@ -20,7 +20,17 @@
 @defer (on viewport; prefetch on idle) {
   <app-pokemon-list />
 } @placeholder {
-  <b>Favourite Pokemon</b>
+  <div class="pokedex-container">
+    <b>Loading your favourite Pokémon...</b>
+    <div class="pokemon-list">
+      @for (index of [1, 2, 3, 4]; track $index) {
+        <div class="pokemon-card skeleton">
+          <div class="image-placeholder"></div>
+          <p class="name-placeholder"></p>
+        </div>
+      }
+    </div>
+  </div>
 }
 
 @defer (on viewport) {

@@ -2,7 +2,8 @@
 <a class="back-button" mat-raised-button routerLink="/pokedex-optimized">
   &laquo; Back to Pokédex
 </a>
-<!--Main banner-->
+
+<!-- Main banner -->
 <div class="banner">
   <img
     ngSrc="/assets/images/pokedex-banner.webp"
@@ -13,29 +14,26 @@
 </div>
 
 <div class="pokemon-content">
-  @if (pokemonDetails.isLoading()) {
+  @if (pokemon() === null) {
     <div style="height: 688px; display: flex; place-items: center">
       <img
         class="loading-animation"
-        alt="loading animation.."
+        alt="loading animation..."
         src="../assets/images/loading.gif" />
     </div>
-  } @else if (pokemonDetails.error()) {
-    <div class="error-state">Error: {{ pokemonDetails.error() }}</div>
-  } @else if (pokemonDetails.value()) {
-    <app-pokemon-details [pokemon]="pokemonDetails.value()" />
+  } @else {
+    <app-pokemon-details [pokemon]="pokemon()" />
   }
 </div>
 
-<!--since here we have bouncing content we also need to make sure that it won't cause layout shift -->
+<!-- Prevent layout shift from deferred content -->
 <div class="problematic-content">
-  <!--and then only load it when the user has it on their viewport -->
   @defer (on viewport) {
     <app-problematic />
   } @placeholder {
     <img
       class="loading-animation"
-      alt="loading animation.."
+      alt="loading animation..."
       src="../assets/images/loading.gif" />
   }
 </div>

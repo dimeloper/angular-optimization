@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { PokemonService } from '../../services/pokemon.service';
 import { Router, RouterLink } from '@angular/router';
+import { PokemonStore } from '../../stores/pokemon-store';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -11,13 +11,22 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class PokemonListComponent {
   private router = inject(Router);
-  private pokemonService = inject(PokemonService);
+  private store = inject(PokemonStore);
 
-  protected pokemonList = this.pokemonService.pokemonListWithDetails;
+  protected pokemonListItems = this.store.pokemonListItems;
+  protected isLoading = this.store.isLoading;
+
+  trackByName = (_: number, item: { name: string }) => item.name;
 
   constructor() {
-    // Initialize with default values
-    this.pokemonService.updateListParams(20, 0);
+    // Fetch list on component load, only if not already loaded
+    this.store.fetchPokemonListOnce().catch(error => {
+      console.error('[LIST] Error fetching Pokemon list:', error);
+    });
+  }
+
+  get items() {
+    return this.store.pokemonListItems();
   }
 
   getPokemonLink(pokemonName: string): string[] {

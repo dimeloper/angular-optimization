@@ -1,8 +1,11 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { TestBed } from '@angular/core/testing';
 import { PokemonListComponent } from './pokemon-list.component';
-import { PokemonService } from '../../services/pokemon.service';
-import { Router } from '@angular/router';
+import { PokemonStore } from '../../stores/pokemon-store';
+import { ActivatedRoute, Router } from '@angular/router';
+import { signal, WritableSignal } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 class MockRouter {
   private _url = '/pokemon';
@@ -18,35 +21,64 @@ class MockRouter {
 
 describe('PokemonListComponent', () => {
   let mockRouter: MockRouter;
-  let mockPokemonService: PokemonService;
+  let mockStore: {
+    fetchPokemonListOnce: ReturnType<typeof vi.fn>;
+    pokemonListItems: WritableSignal<
+      Array<{ id: string; name: string; image: string }>
+    >;
+    isLoading: WritableSignal<boolean>;
+  };
   let component: PokemonListComponent;
 
   beforeEach(() => {
     mockRouter = new MockRouter();
 
-    mockPokemonService = {
-      pokemonListWithDetails: [],
-      updateListParams: vi.fn(),
-    } as unknown as PokemonService;
+    const itemsSignal = signal([
+      { id: 'pikachu', name: 'Pikachu', image: 'pikachu.png' },
+    ]);
+    const loadingSignal = signal(false);
+
+    mockStore = {
+      fetchPokemonListOnce: vi.fn().mockImplementation(() => {
+        // Simulate store mutation
+        itemsSignal.set([
+          { id: 'bulbasaur', name: 'Bulbasaur', image: 'bulbasaur.png' },
+        ]);
+        return Promise.resolve();
+      }),
+      pokemonListItems: itemsSignal,
+      isLoading: loadingSignal,
+    };
 
     TestBed.configureTestingModule({
-      imports: [PokemonListComponent], // Because PokemonListComponent is standalone
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule.withRoutes([]),
+        PokemonListComponent,
+      ],
       providers: [
-        { provide: Router, useValue: mockRouter },
-        { provide: PokemonService, useValue: mockPokemonService },
+        { provide: PokemonStore, useValue: mockStore },
+        { provide: ActivatedRoute, useValue: {} },
       ],
     });
 
     const fixture = TestBed.createComponent(PokemonListComponent);
     component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create the component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call updateListParams with 20 and 0 on initialization', () => {
-    expect(mockPokemonService.updateListParams).toHaveBeenCalledWith(20, 0);
+  it('should call fetchPokemonListOnce on initialization', () => {
+    expect(mockStore.fetchPokemonListOnce).toHaveBeenCalled();
+  });
+
+  it('should reflect the updated Pokémon list in the component', () => {
+    const items = component.items;
+    expect(items.length).toBe(1);
+    expect(items[0].name).toBe('Bulbasaur');
   });
 
   describe('getPokemonLink', () => {
@@ -57,13 +89,17 @@ describe('PokemonListComponent', () => {
     });
 
     it('should return /pokemon-optimized/:name when URL ends with -optimized', () => {
-      mockRouter.setUrl('/some-path-optimized');
+      const router = TestBed.inject(Router);
+      vi.spyOn(router, 'url', 'get').mockReturnValue('/some-path-optimized');
+
       const link = component.getPokemonLink('charmander');
       expect(link).toEqual(['/pokemon-optimized', 'charmander']);
     });
 
     it('should return /pokemon-bad/:name when URL ends with -bad', () => {
-      mockRouter.setUrl('/some-path-bad');
+      const router = TestBed.inject(Router);
+      vi.spyOn(router, 'url', 'get').mockReturnValue('/some-path-bad');
+
       const link = component.getPokemonLink('bulbasaur');
       expect(link).toEqual(['/pokemon-bad', 'bulbasaur']);
     });

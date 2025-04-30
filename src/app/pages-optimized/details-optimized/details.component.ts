@@ -1,10 +1,12 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, effect } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { PokemonService } from '../../services/pokemon.service';
+import { PokemonStore } from '../../stores/pokemon-store';
 import { PokemonDetailsComponent } from '../../components/pokemon-details/pokemon-details.component';
 import { ProblematicComponent } from '../../components/problematic/problematic.component';
 import { NgOptimizedImage, provideImgixLoader } from '@angular/common';
 import { MatAnchor } from '@angular/material/button';
+import { computed } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-pokemon-details-optimized-page',
@@ -24,14 +26,23 @@ import { MatAnchor } from '@angular/material/button';
 })
 export class DetailsOptimizedPageComponent {
   private route = inject(ActivatedRoute);
-  private pokemonService = inject(PokemonService);
+  private store = inject(PokemonStore);
 
-  protected pokemonDetails = this.pokemonService.pokemonDetails;
+  private routeParams = toSignal(this.route.params, { initialValue: {} });
+
+  protected pokemon = computed(() => {
+    const name = (this.routeParams() as any)['name'];
+    if (!name) return null;
+    return this.store.pokemonDetailsMap()[name] ?? null;
+  });
 
   constructor() {
-    this.route.params.subscribe(params => {
-      if (params['name']) {
-        this.pokemonService.setSelectedPokemon(params['name']);
+    effect(() => {
+      const params = this.routeParams();
+      const name = params && 'name' in params ? params['name'] : null;
+
+      if (name) {
+        this.store.fetchAndCachePokemonDetails(name);
       }
     });
   }
