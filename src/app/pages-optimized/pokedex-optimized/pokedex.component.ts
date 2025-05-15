@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { PokemonListComponent } from '../../components/pokemon-list/pokemon-list.component';
 import { MatDialog } from '@angular/material/dialog';

@@ -1,6 +1,6 @@
 <div class="pokemon-teaser-grid">
   @for (pokemon of pokemons; track pokemon) {
-    <mat-card class="pokemon-card">
+    <mat-card class="pokemon-card" [routerLink]="getPokemonLink(pokemon)">
       <mat-card-header>
         <mat-card-title-group>
           <mat-card-title>{{ pokemon.title }}</mat-card-title>
