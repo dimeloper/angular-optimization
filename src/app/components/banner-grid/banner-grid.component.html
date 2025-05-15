@@ -1,21 +1,21 @@
 <div class="pokemon-teaser-grid">
   @for (pokemon of pokemons; track pokemon) {
-    <mat-card class="pokemon-card">
-      <mat-card-header>
-        <mat-card-title-group>
-          <mat-card-title>{{ pokemon.title }}</mat-card-title>
-          <mat-card-subtitle>Extra large</mat-card-subtitle>
-        </mat-card-title-group>
-      </mat-card-header>
-      <img
-        class="pokemon-teaser"
-        [ngSrc]="pokemon.image"
-        [alt]="'Teaser showing ' + pokemon.title"
-        width="160"
-        height="160" />
-      <mat-card-content class="pokemon-preview">
-        {{ pokemon.preview }}
-      </mat-card-content>
-    </mat-card>
-  }
+      <mat-card class="pokemon-card" [routerLink]="getPokemonLink(pokemon)">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>{{ pokemon.title }}</mat-card-title>
+            <mat-card-subtitle>Extra large</mat-card-subtitle>
+          </mat-card-title-group>
+        </mat-card-header>
+        <img
+          class="pokemon-teaser"
+          [ngSrc]="pokemon.image"
+          [alt]="'Teaser showing ' + pokemon.title"
+          width="160"
+          height="160" />
+        <mat-card-content class="pokemon-preview">
+          {{ pokemon.preview }}
+        </mat-card-content>
+      </mat-card>
+    }
 </div>

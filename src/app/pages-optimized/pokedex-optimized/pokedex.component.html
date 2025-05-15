@@ -14,9 +14,7 @@
 </div>
 
 <!-- Secondary banners / teasers -->
-@defer (hydrate on interaction) {
-  <app-banner-grid />
-}
+<app-banner-grid />
 
 <!-- Dynamic content -->
 @defer (on viewport; prefetch on idle) {
@@ -35,7 +33,7 @@
   </div>
 }
 
-@defer (on viewport) {
+@defer (hydrate on interaction) {
   <div class="button-wrapper">
     <button mat-raised-button (click)="openDialog()">
       Pick your favorite via popup form

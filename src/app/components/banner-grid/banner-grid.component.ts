@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import {
   MatCard,
   MatCardContent,
@@ -19,12 +20,17 @@ import { NgOptimizedImage, provideImgixLoader } from '@angular/common';
     MatCardTitleGroup,
     MatCardContent,
     NgOptimizedImage,
+    RouterLink,
   ],
   templateUrl: './banner-grid.component.html',
   styleUrl: './banner-grid.component.scss',
   providers: [provideImgixLoader('https://assets.pokemon.com')],
 })
 export class BannerGridComponent {
+  public getPokemonLink(pokemon: { title: string }): string {
+    return `/pokemon-optimized/${pokemon.title.toLowerCase()}`;
+  }
+
   public pokemons = [
     {
       title: 'Blastoise',
