@@ -17,6 +17,18 @@
     "bundle-report": "ng build --configuration production --source-map && source-map-explorer dist/*.js",
     "prepare": "husky"
   },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{html,css,scss}": [
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^19.2.8",
@@ -60,6 +72,7 @@
     "husky": "^9.1.7",
     "jasmine-core": "~5.1.0",
     "jsdom": "^26.1.0",
+    "lint-staged": "^16.0.0",
     "prettier": "^3.2.5",
     "source-map-explorer": "^2.5.3",
     "typescript": "~5.6.3",
