@@ -14,7 +14,9 @@
 </div>
 
 <!-- Secondary banners / teasers -->
-<app-banner-grid />
+@defer (hydrate on interaction) {
+  <app-banner-grid />
+}
 
 <!-- Dynamic content -->
 @defer (on viewport; prefetch on idle) {
