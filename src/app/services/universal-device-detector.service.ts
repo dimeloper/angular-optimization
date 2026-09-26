@@ -7,10 +7,10 @@ import { isPlatformServer } from '@angular/common';
 })
 export class UniversalDeviceDetectorService extends DeviceDetectorService {
   constructor() {
+    super();
     const platformId = inject(PLATFORM_ID);
     const request = inject<Request>(REQUEST, { optional: true });
 
-    super(platformId);
     if (isPlatformServer(platformId) && request) {
       super.setDeviceInfo(request.headers.get('user-agent') || '');
     }

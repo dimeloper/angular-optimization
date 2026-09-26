@@ -1,9 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { NgForOf } from '@angular/common';
 
 @Component({
   selector: 'app-problematic',
-  imports: [NgForOf],
   templateUrl: './problematic.component.html',
   styleUrl: './problematic.component.scss',
 })

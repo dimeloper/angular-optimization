@@ -1,3 +1,5 @@
-<div *ngFor="let image of largeImages">
-  <img [src]="image" style="width: 100%" />
-</div>
+@for (image of largeImages; track image) {
+  <div>
+    <img [src]="image" style="width: 100%" />
+  </div>
+}
