@@ -1,9 +1,8 @@
-import angular from '@angular-eslint/eslint-plugin';
-import angularTemplate from '@angular-eslint/eslint-plugin-template';
-import angularParser from '@angular-eslint/template-parser';
-import tsParser from '@typescript-eslint/parser';
+// @ts-check
+import angular from 'angular-eslint';
+import tseslint from 'typescript-eslint';
 
-export default [
+export default tseslint.config(
   // Ignore patterns
   {
     ignores: [
@@ -17,17 +16,14 @@ export default [
   // TypeScript files configuration
   {
     files: ['**/*.ts'],
+    extends: [...angular.configs.tsRecommended],
     languageOptions: {
-      parser: tsParser,
       parserOptions: {
         project: ['./tsconfig.json', './e2e/tsconfig.json'],
       },
     },
-    plugins: {
-      '@angular-eslint': angular,
-    },
+    processor: angular.processInlineTemplates,
     rules: {
-      ...angular.configs.recommended.rules,
       '@angular-eslint/component-selector': [
         'error',
         {
@@ -50,14 +46,6 @@ export default [
   // HTML template files configuration
   {
     files: ['**/*.html'],
-    languageOptions: {
-      parser: angularParser,
-    },
-    plugins: {
-      '@angular-eslint/template': angularTemplate,
-    },
-    rules: {
-      ...angularTemplate.configs.recommended.rules,
-    },
-  },
-];
+    extends: [...angular.configs.templateRecommended],
+  }
+);

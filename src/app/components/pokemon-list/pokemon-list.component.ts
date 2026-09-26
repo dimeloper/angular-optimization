@@ -4,7 +4,6 @@ import { PokemonStore } from '../../stores/pokemon-store';
 
 @Component({
   selector: 'app-pokemon-list',
-  standalone: true,
   imports: [RouterLink],
   templateUrl: './pokemon-list.component.html',
   styleUrl: './pokemon-list.component.scss',
@@ -15,8 +14,6 @@ export class PokemonListComponent {
 
   protected pokemonListItems = this.store.pokemonListItems;
   protected isLoading = this.store.isLoading;
-
-  trackByName = (_: number, item: { name: string }) => item.name;
 
   constructor() {
     // Fetch list on component load, only if not already loaded

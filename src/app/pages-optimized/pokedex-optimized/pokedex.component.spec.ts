@@ -3,7 +3,6 @@ import { PokedexComponent } from './pokedex.component';
 import { Component } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatDialog } from '@angular/material/dialog';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
 import { vi } from 'vitest';
 
@@ -42,7 +41,7 @@ describe('PokedexComponent', () => {
     };
 
     await TestBed.configureTestingModule({
-      imports: [PokedexComponent, RouterTestingModule, BrowserAnimationsModule],
+      imports: [PokedexComponent, RouterTestingModule],
       providers: [{ provide: MatDialog, useValue: mockMatDialog }],
     })
       .overrideComponent(PokedexComponent, {
@@ -66,9 +65,9 @@ describe('PokedexComponent', () => {
   });
 
   it('should set hideForm to false when openForm is called', () => {
-    expect(component.hideForm).toBe(true);
+    expect(component.hideForm()).toBe(true);
     component.openForm();
-    expect(component.hideForm).toBe(false);
+    expect(component.hideForm()).toBe(false);
   });
 
   it('should open dialog when openDialog is called', () => {

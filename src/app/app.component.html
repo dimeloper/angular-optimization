@@ -6,9 +6,7 @@
         name="menu"
         aria-label="menu"
         mat-icon-button
-        [matMenuTriggerFor]="menu"
-        #menuTrigger="matMenuTrigger"
-        (click)="menuTrigger.openMenu()">
+        [matMenuTriggerFor]="menu">
         <mat-icon>menu</mat-icon>
       </button>
       <mat-menu #menu="matMenu" [overlapTrigger]="false">

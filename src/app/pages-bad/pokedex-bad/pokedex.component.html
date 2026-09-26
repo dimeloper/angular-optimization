@@ -1,11 +1,11 @@
 <!--Main banner-->
 <div class="banner">
-  @if (banner !== '') {
-    <img [src]="banner" />
+  @if (banner() !== '') {
+    <img [src]="banner()" />
   }
 </div>
 <!--Secondary banners-->
-<mat-grid-list [cols]="cols" [rowHeight]="rowHeight">
+<mat-grid-list [cols]="cols()" [rowHeight]="rowHeight()">
   @for (pokemon of pokemons; track pokemon) {
     <mat-grid-tile>
       <mat-card class="pokemon-card">
@@ -34,6 +34,6 @@
   </button>
   <!--  this forces client side rendering to demonstrate the impact of heavy calculations on the client -->
   @defer {
-    <app-form [hidden]="hideForm" />
+    <app-form [hidden]="hideForm()" />
   }
 </div>

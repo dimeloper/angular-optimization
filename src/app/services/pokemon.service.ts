@@ -62,9 +62,9 @@ export class PokemonService {
     PokemonListResponse,
     { limit: number; offset: number }
   >({
-    request: this.listParams,
+    params: this.listParams,
     loader: async params => {
-      const { limit, offset } = params.request;
+      const { limit, offset } = params.params;
       const response = await fetch(
         `${this.baseUrl}/pokemon?limit=${limit}&offset=${offset}`,
         { signal: params.abortSignal }
@@ -76,9 +76,9 @@ export class PokemonService {
   });
 
   pokemonDetails = resource<Pokemon, string>({
-    request: this.selectedPokemonName,
+    params: this.selectedPokemonName,
     loader: async params => {
-      const name = params.request;
+      const name = params.params;
       if (!name) return Promise.resolve(null as any);
 
       try {
@@ -107,9 +107,9 @@ export class PokemonService {
     PokemonListWithDetailsItem[],
     BasePokemonItem[]
   >({
-    request: computed(() => this.pokemonList.value()?.results ?? []),
+    params: computed(() => this.pokemonList.value()?.results ?? []),
     loader: async params => {
-      const pokemonUrls = params.request;
+      const pokemonUrls = params.params;
       try {
         const details = await Promise.all(
           pokemonUrls.map(async ({ url }) => {

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {
   MatCard,
   MatCardContent,
@@ -40,8 +40,8 @@ export class PokedexComponent implements OnInit {
   private breakpointObserver = inject(BreakpointObserver);
   dialog = inject(MatDialog);
 
-  public cols = 1;
-  public rowHeight = '380px';
+  public cols = signal(1);
+  public rowHeight = signal('380px');
 
   public pokemons = [
     {
@@ -86,9 +86,9 @@ export class PokedexComponent implements OnInit {
     mobile: '../assets/images/non-optimized/pokemon-banner-mobile.png',
     desktop: '../assets/images/non-optimized/pokemon-banner.png',
   };
-  public banner = '';
+  public banner = signal('');
 
-  public hideForm = true;
+  public hideForm = signal(true);
 
   private gridByBreakpoint = {
     xl: 3,
@@ -110,29 +110,29 @@ export class PokedexComponent implements OnInit {
       .subscribe(result => {
         if (result.matches) {
           if (result.breakpoints[Breakpoints.XSmall]) {
-            this.banner = this.banners.mobile;
-            this.cols = this.gridByBreakpoint.xs;
-            this.rowHeight = '250px';
+            this.banner.set(this.banners.mobile);
+            this.cols.set(this.gridByBreakpoint.xs);
+            this.rowHeight.set('250px');
           }
           if (result.breakpoints[Breakpoints.Small]) {
-            this.banner = this.banners.mobile;
-            this.cols = this.gridByBreakpoint.sm;
-            this.rowHeight = '250px';
+            this.banner.set(this.banners.mobile);
+            this.cols.set(this.gridByBreakpoint.sm);
+            this.rowHeight.set('250px');
           }
           if (result.breakpoints[Breakpoints.Medium]) {
-            this.banner = this.banners.desktop;
-            this.cols = this.gridByBreakpoint.md;
-            this.rowHeight = '380px';
+            this.banner.set(this.banners.desktop);
+            this.cols.set(this.gridByBreakpoint.md);
+            this.rowHeight.set('380px');
           }
           if (result.breakpoints[Breakpoints.Large]) {
-            this.banner = this.banners.desktop;
-            this.cols = this.gridByBreakpoint.lg;
-            this.rowHeight = '380px';
+            this.banner.set(this.banners.desktop);
+            this.cols.set(this.gridByBreakpoint.lg);
+            this.rowHeight.set('380px');
           }
           if (result.breakpoints[Breakpoints.XLarge]) {
-            this.banner = this.banners.desktop;
-            this.cols = this.gridByBreakpoint.xl;
-            this.rowHeight = '380px';
+            this.banner.set(this.banners.desktop);
+            this.cols.set(this.gridByBreakpoint.xl);
+            this.rowHeight.set('380px');
           }
         }
       });
@@ -149,6 +149,6 @@ export class PokedexComponent implements OnInit {
   }
 
   openForm(): void {
-    this.hideForm = false;
+    this.hideForm.set(false);
   }
 }

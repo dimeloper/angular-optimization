@@ -23,7 +23,7 @@ import { BannerGridComponent } from '../../components/banner-grid/banner-grid.co
   ],
 })
 export class PokedexComponent {
-  public hideForm = true;
+  public hideForm = signal(true);
 
   private dialog = inject(MatDialog);
 
@@ -38,6 +38,6 @@ export class PokedexComponent {
   }
 
   openForm(): void {
-    this.hideForm = false;
+    this.hideForm.set(false);
   }
 }

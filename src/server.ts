@@ -1,49 +1,21 @@
-import { isMainModule } from '@angular/ssr/node';
-import express from 'express';
-import { dirname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { getContext } from '@netlify/angular-runtime/context';
 import { AngularAppEngine, createRequestHandler } from '@angular/ssr';
-
-const serverDistFolder = dirname(fileURLToPath(import.meta.url));
-const browserDistFolder = resolve(serverDistFolder, '../browser');
-
-const app = express();
-const angularAppEngine = new AngularAppEngine();
+import {
+  getAllowedHosts,
+  getContext,
+  getTrustProxyHeaders,
+} from '@netlify/angular-runtime/app-engine.js';
 
 /**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
+ * Netlify-compatible request handling for Angular's App Engine.
  *
- * Example:
- * ```ts
- * app.get('/api/**', (req, res) => {
- *   // Handle API request
- * });
- * ```
+ * `@netlify/angular-runtime` deploys this module as an Edge Function (Deno),
+ * so it must not depend on Node-only servers such as Express.
+ * See https://github.com/netlify/angular-runtime#request-handling
  */
-
-/**
- * Serve static files from /browser
- */
-app.use(
-  express.static(browserDistFolder, {
-    maxAge: '1y',
-    index: false,
-    redirect: false,
-  })
-);
-
-/**
- * Start the server if this module is the main entry point.
- * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
- */
-if (isMainModule(import.meta.url)) {
-  const port = process.env['PORT'] || 4000;
-  app.listen(port, () => {
-    console.log(`Node Express server listening on http://localhost:${port}`);
-  });
-}
+const angularAppEngine = new AngularAppEngine({
+  allowedHosts: getAllowedHosts(),
+  trustProxyHeaders: getTrustProxyHeaders(),
+});
 
 export async function netlifyAppEngineHandler(
   request: Request
