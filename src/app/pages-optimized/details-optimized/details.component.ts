@@ -15,7 +15,6 @@ import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-pokemon-details-optimized-page',
-  standalone: true,
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss',
   imports: [

@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DetailsOptimizedPageComponent } from './details.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PokemonStore } from '../../stores/pokemon-store';
 import { vi } from 'vitest';
 import { BehaviorSubject, of } from 'rxjs';
@@ -37,7 +36,6 @@ describe('DetailsOptimizedPageComponent', () => {
         HttpClientTestingModule,
         DetailsOptimizedPageComponent,
         RouterTestingModule,
-        BrowserAnimationsModule,
       ],
       providers: [
         { provide: PokemonStore, useValue: mockStore },
