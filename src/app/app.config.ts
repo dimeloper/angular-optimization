@@ -8,12 +8,8 @@ import {
 } from '@angular/router';
 
 import { routes } from './app.routes';
-import {
-  provideClientHydration,
-  withIncrementalHydration,
-} from '@angular/platform-browser';
-import { provideHttpClient, withFetch } from '@angular/common/http';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideClientHydration } from '@angular/platform-browser';
+import { provideHttpClient } from '@angular/common/http';
 import { PokemonStore } from './stores/pokemon-store';
 
 const scrollConfig: InMemoryScrollingOptions = {
@@ -28,9 +24,9 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection(),
     provideRouter(routes, inMemoryScrollingFeature, withViewTransitions()),
-    provideClientHydration(withIncrementalHydration()),
-    provideHttpClient(withFetch()),
-    provideAnimationsAsync(),
+    // Incremental hydration and the fetch backend are the defaults since v22.
+    provideClientHydration(),
+    provideHttpClient(),
     PokemonStore,
   ],
 };
