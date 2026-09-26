@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
   MatCard,
@@ -24,7 +24,6 @@ import { NgOptimizedImage, provideImgixLoader } from '@angular/common';
   ],
   templateUrl: './banner-grid.component.html',
   styleUrl: './banner-grid.component.scss',
-  changeDetection: ChangeDetectionStrategy.Eager,
   providers: [provideImgixLoader('https://assets.pokemon.com')],
 })
 export class BannerGridComponent {

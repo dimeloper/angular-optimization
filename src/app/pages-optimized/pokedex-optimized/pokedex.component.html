@@ -44,7 +44,7 @@
     <!-- here we secure that no heavy calculation will affect the page load -->
     <!-- additionally by using @loading we make sure that our INP score will not be affected -->
     <!-- since showing the form allocates some time to do the calculation -->
-    @if (!hideForm) {
+    @if (!hideForm()) {
       @defer {
         <app-form />
       } @loading (minimum 500ms) {

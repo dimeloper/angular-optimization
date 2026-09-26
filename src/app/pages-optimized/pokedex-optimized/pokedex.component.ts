@@ -1,9 +1,4 @@
-import {
-  Component,
-  inject,
-  signal,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { PokemonListComponent } from '../../components/pokemon-list/pokemon-list.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -23,13 +18,12 @@ import { BannerGridComponent } from '../../components/banner-grid/banner-grid.co
   ],
   templateUrl: './pokedex.component.html',
   styleUrl: './pokedex.component.scss',
-  changeDetection: ChangeDetectionStrategy.Eager,
   providers: [
     provideImgixLoader('https://ng-pokedex-optimization.netlify.app/'),
   ],
 })
 export class PokedexComponent {
-  public hideForm = true;
+  public hideForm = signal(true);
 
   private dialog = inject(MatDialog);
 
@@ -44,6 +38,6 @@ export class PokedexComponent {
   }
 
   openForm(): void {
-    this.hideForm = false;
+    this.hideForm.set(false);
   }
 }

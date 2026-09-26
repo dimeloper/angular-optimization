@@ -1,4 +1,4 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PokemonService } from '../../services/pokemon.service';
 import { MatAnchor } from '@angular/material/button';
@@ -15,7 +15,6 @@ import { PokemonDetailsComponent } from '../../components/pokemon-details/pokemo
   ],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss',
-  changeDetection: ChangeDetectionStrategy.Eager,
   host: { ngSkipHydration: 'true' },
 })
 export class DetailsBadPageComponent {
