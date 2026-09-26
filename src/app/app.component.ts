@@ -4,6 +4,7 @@ import {
   inject,
   Renderer2,
   ViewChild,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatToolbar } from '@angular/material/toolbar';
@@ -26,6 +27,7 @@ import { FooterAnimationComponent } from './components/footer-animation/footer-a
     FooterAnimationComponent,
   ],
   templateUrl: './app.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './app.component.scss',
 })
 export class AppComponent {

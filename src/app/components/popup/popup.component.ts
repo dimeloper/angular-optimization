@@ -1,4 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {
+  Component,
+  inject,
+  OnInit,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialogActions,
@@ -31,6 +36,7 @@ export interface DialogData {
     MatDialogTitle,
   ],
   templateUrl: './popup.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './popup.component.scss',
 })
 export class PopupComponent implements OnInit {

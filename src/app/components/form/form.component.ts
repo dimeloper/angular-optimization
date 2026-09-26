@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatDialogTitle } from '@angular/material/dialog';
@@ -16,6 +16,7 @@ import { MatInput } from '@angular/material/input';
     MatLabel,
   ],
   templateUrl: './form.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './form.component.scss',
 })
 export class FormComponent implements OnInit {

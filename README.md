@@ -29,7 +29,7 @@ For more details, refer to the related article: [Supercharging Angular apps for 
 
 ## Update to version 19
 
-The project utilises Angular version 19 and most of its latest features. If you want to review the changes so as to utilise the latest features in your project too, here is the related PR: [Update project to Angular v19](https://github.com/dimeloper/angular-optimization/pull/9).
+The project utilises Angular version 22 and most of its latest features. For reference, the earlier upgrade to v19 is available here: [Update project to Angular v19](https://github.com/dimeloper/angular-optimization/pull/9).
 
 ## Performance measurements
 
