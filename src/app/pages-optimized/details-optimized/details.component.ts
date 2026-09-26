@@ -1,4 +1,9 @@
-import { Component, inject, effect } from '@angular/core';
+import {
+  Component,
+  inject,
+  effect,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PokemonStore } from '../../stores/pokemon-store';
 import { PokemonDetailsComponent } from '../../components/pokemon-details/pokemon-details.component';
@@ -20,6 +25,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
     MatAnchor,
     RouterLink,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   providers: [
     provideImgixLoader('https://ng-pokedex-optimization.netlify.app/'),
   ],

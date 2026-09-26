@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { PokemonStore } from '../../stores/pokemon-store';
 
@@ -7,6 +7,7 @@ import { PokemonStore } from '../../stores/pokemon-store';
   standalone: true,
   imports: [RouterLink],
   templateUrl: './pokemon-list.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './pokemon-list.component.scss',
 })
 export class PokemonListComponent {

@@ -1,4 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {
+  Component,
+  inject,
+  OnInit,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import {
   MatCard,
   MatCardContent,
@@ -34,6 +39,7 @@ import { FormComponent } from '../../components/form/form.component';
   ],
   templateUrl: './pokedex.component.html',
   styleUrl: './pokedex.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
   host: { ngSkipHydration: 'true' },
 })
 export class PokedexComponent implements OnInit {
