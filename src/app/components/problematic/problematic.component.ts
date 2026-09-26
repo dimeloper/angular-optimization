@@ -1,14 +1,8 @@
-import {
-  AfterViewInit,
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-problematic',
   templateUrl: './problematic.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './problematic.component.scss',
 })
 export class ProblematicComponent implements OnInit, AfterViewInit {

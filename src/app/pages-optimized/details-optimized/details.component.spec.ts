@@ -6,7 +6,6 @@ import { vi } from 'vitest';
 import { BehaviorSubject, of } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { fakeAsync, tick } from '@angular/core/testing';
 
 describe('DetailsOptimizedPageComponent', () => {
   let component: DetailsOptimizedPageComponent;
@@ -55,20 +54,15 @@ describe('DetailsOptimizedPageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call fetchAndCachePokemonDetails when route param is set', fakeAsync(() => {
+  it('should call fetchAndCachePokemonDetails when route param is set', async () => {
     // Triggers a new emission of route parameters (e.g., { name: 'pikachu' })
     params$.next({ name: 'pikachu' });
 
-    // Run change detection again to ensure the component picks up the new route params
-    // This allows the toSignal(...) inside the component to update with the latest value
-    fixture.detectChanges();
-
-    // Advance Angular's internal timers to flush signal reactions and effect() calls
-    // This ensures the effect that calls fetchAndCachePokemonDetails runs synchronously in the test
-    tick();
+    // Let zoneless change detection flush the toSignal(...) update and the effect()
+    await fixture.whenStable();
 
     expect(mockStore.fetchAndCachePokemonDetails).toHaveBeenCalledWith(
       'pikachu'
     );
-  }));
+  });
 });

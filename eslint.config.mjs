@@ -24,9 +24,6 @@ export default tseslint.config(
     },
     processor: angular.processInlineTemplates,
     rules: {
-      // Components keep ChangeDetectionStrategy.Eager (added by the v22 migration)
-      // to preserve pre-v22 behaviour; adopting OnPush is a separate change.
-      '@angular-eslint/prefer-on-push-component-change-detection': 'off',
       '@angular-eslint/component-selector': [
         'error',
         {

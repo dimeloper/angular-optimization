@@ -1,13 +1,16 @@
 import '@angular/compiler';
-import '@analogjs/vitest-angular/setup-zone';
+import { setupTestBed } from '@analogjs/vitest-angular/setup-testbed';
 
-import {
-  BrowserTestingModule,
-  platformBrowserTesting,
-} from '@angular/platform-browser/testing';
-import { getTestBed } from '@angular/core/testing';
+// jsdom does not implement IntersectionObserver, which `@defer (on viewport)` relies on.
+class IntersectionObserverStub {
+  observe(): void {}
+  unobserve(): void {}
+  disconnect(): void {}
+  takeRecords(): IntersectionObserverEntry[] {
+    return [];
+  }
+}
+globalThis.IntersectionObserver ??=
+  IntersectionObserverStub as unknown as typeof IntersectionObserver;
 
-getTestBed().initTestEnvironment(
-  BrowserTestingModule,
-  platformBrowserTesting()
-);
+setupTestBed({ zoneless: true });

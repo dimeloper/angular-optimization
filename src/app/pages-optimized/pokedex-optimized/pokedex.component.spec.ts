@@ -65,9 +65,9 @@ describe('PokedexComponent', () => {
   });
 
   it('should set hideForm to false when openForm is called', () => {
-    expect(component.hideForm).toBe(true);
+    expect(component.hideForm()).toBe(true);
     component.openForm();
-    expect(component.hideForm).toBe(false);
+    expect(component.hideForm()).toBe(false);
   });
 
   it('should open dialog when openDialog is called', () => {
